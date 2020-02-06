@@ -40,7 +40,7 @@ public class UIController : MonoBehaviour
         if (_currentScreen < screens.Length)
         {
             screens[_currentScreen].SetActive(false);
-            _currentScreen++;
+            _currentScreen++;    
             SetupScreen();
         }
         Debug.Log(_currentScreen);

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Collections/String List")]
-public class ContetTexts : ScriptableObject
+
+public class ContentList : ScriptableObject
 {
-    public string[] texts;
+    public ProblemDefinition[] problems;
 }

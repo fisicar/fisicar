@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UIElements.Image;
 
 public class UIController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class UIController : MonoBehaviour
     public Button backButton;
     public Button[] topicButtons;
     public TextMeshProUGUI contentExplanation;
-    public ContetTexts contentExplanationsTexts;
+    public ContentList contentExplanationsList;
     public GameObject panel;
     public Button backButton2;
     public GameObject questionButtonPrefab;
@@ -59,18 +60,21 @@ public class UIController : MonoBehaviour
 
     private void InstantiateButtons()
     {
-        for (var i = 0; i < contentExplanationsTexts.texts.Length; i++)
+        for (var i = 0; i < contentExplanationsList.problems.Length; i++)
         {
             var instantiatedButton = Instantiate(questionButtonPrefab,questionContentArea.transform);
-            var button = instantiatedButton.GetComponent<Button>();
+            var button = instantiatedButton.GetComponent<QuestionButton>();
 
             var i1 = i;
-            button.onClick.AddListener((() =>
+            button.questionButton.onClick.AddListener((() =>
             {
                 NextScreen();
-                var text = contentExplanationsTexts.texts[i1];
+                var text = contentExplanationsList.problems[i1].longDescription;
                 contentExplanation.text = text;
             }));
+
+            button.questionImage.sprite = contentExplanationsList.problems[i1].sprite;
+            button.titleText.text = contentExplanationsList.problems[i1].title;
         }
     }
     private void SetupScreen()

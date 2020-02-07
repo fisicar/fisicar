@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 2402469345047093918}
   - component: {fileID: 2402469345047093919}
   - component: {fileID: 2402469345047093912}
+  - component: {fileID: 3005611647892967645}
   m_Layer: 5
   m_Name: Content Button
   m_TagString: Untagged
@@ -274,6 +275,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3005611647892967645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402469345047093914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4ae6db31903614fa8c335faab35689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionImage: {fileID: 7050735165050810063}
+  titleText: {fileID: 2402469343911444264}
+  questionButton: {fileID: 2402469345047093912}
 --- !u!1 &5578396685496239010
 GameObject:
   m_ObjectHideFlags: 0

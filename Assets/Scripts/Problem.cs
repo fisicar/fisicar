@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Problem : ScriptableObject
 {
-    public int degree;
-    public float[] coefficients;
-    public float answer;
+    protected int Degree;
+    protected float[] Coefficients;
+    protected float Answer;
 
     public Vector2 minValue;
     public Vector2 maxValue;

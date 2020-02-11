@@ -12,23 +12,23 @@ public class DoubleMU : SimpleMU
 
     public override void Process()
     {
-        degree = 1;
-        coefficients = new float[degree + 1];
-        coefficients[0] = initialPosition - initialPositionB;
-        coefficients[1] = velocity - velocityB;
+        Degree = 1;
+        Coefficients = new float[Degree + 1];
+        Coefficients[0] = initialPosition - initialPositionB;
+        Coefficients[1] = velocity - velocityB;
 
-        answer = -coefficients[0] / coefficients[1];
+        Answer = -Coefficients[0] / Coefficients[1];
     }
 
     public override float Evaluate(float normalizedValue)
     {
-        var time = normalizedValue * answer;
+        var time = normalizedValue * Answer;
         return initialPosition + velocity * time;
     }
 
     public float EvaluateB(float normalizedValueB)
     {
-        var time = normalizedValueB * answer;
+        var time = normalizedValueB * Answer;
         return initialPositionB + velocityB * time;
     }
 }

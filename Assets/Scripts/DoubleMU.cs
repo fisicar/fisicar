@@ -10,6 +10,7 @@ public class DoubleMU : SimpleMU
     public float timeB;
     public float velocityB;
 
+    [ContextMenu("Process Double MU")]
     public override void Process()
     {
         Degree = 1;

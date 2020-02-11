@@ -12,7 +12,6 @@ public class UIController : MonoBehaviour
     public GameObject[] screens;
     public Button nextButton;
     public Button backButton;
-    public Button[] topicButtons;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
     public GameObject panel;
@@ -28,6 +27,7 @@ public class UIController : MonoBehaviour
         {
             t.gameObject.SetActive(false);
         }
+        panel.gameObject.SetActive(true);
         
         SetupScreen();
         InstantiateButtons();

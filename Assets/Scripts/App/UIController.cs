@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     public Button backButton;
     public Button[] topicButtons;
     public TextMeshProUGUI contentExplanation;
-    public ContentList contentExplanationsList;
+    public ContentList contentQuestionsList;
     public GameObject panel;
     public Button backButton2;
     public GameObject questionButtonPrefab;
@@ -24,9 +24,9 @@ public class UIController : MonoBehaviour
     
     public void Awake()
     {
-        for (var i = 0; i < screens.Length; i++)
+        foreach (var t in screens)
         {
-            screens[i].gameObject.SetActive(false);
+            t.gameObject.SetActive(false);
         }
         
         SetupScreen();
@@ -60,7 +60,7 @@ public class UIController : MonoBehaviour
 
     private void InstantiateButtons()
     {
-        for (var i = 0; i < contentExplanationsList.problems.Length; i++)
+        for (var i = 0; i < contentQuestionsList.problems.Length; i++)
         {
             var instantiatedButton = Instantiate(questionButtonPrefab,questionContentArea.transform);
             var button = instantiatedButton.GetComponent<QuestionButton>();
@@ -69,12 +69,12 @@ public class UIController : MonoBehaviour
             button.questionButton.onClick.AddListener((() =>
             {
                 NextScreen();
-                var text = contentExplanationsList.problems[i1].longDescription;
+                var text = contentQuestionsList.problems[i1].longDescription;
                 contentExplanation.text = text;
             }));
 
-            button.questionImage.sprite = contentExplanationsList.problems[i1].sprite;
-            button.titleText.text = contentExplanationsList.problems[i1].title;
+            button.questionImage.sprite = contentQuestionsList.problems[i1].sprite;
+            button.titleText.text = contentQuestionsList.problems[i1].title;
         }
     }
     private void SetupScreen()

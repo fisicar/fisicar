@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,19 +7,18 @@ public class Problem : ScriptableObject
 {
     public int degree;
     public float[] coefficients;
-    public float[] roots;
+    public float answer;
 
     public Vector2 minValue;
     public Vector2 maxValue;
 
     public virtual void Process()
     {
-        Debug.Log("call 2");
+        throw new NotImplementedException();
     }
 
-    public virtual float Evaluate(float i)
+    public virtual float Evaluate(float normalizedValue)
     {
         return float.NaN;
-        
     }
 }

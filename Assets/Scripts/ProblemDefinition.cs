@@ -9,7 +9,6 @@ public class ProblemDefinition
     public string title;
     
     [Multiline]
-    
     public string longDescription;
 
     public Problem problem;

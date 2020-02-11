@@ -16,19 +16,17 @@ public class SimpleMU : Problem
     
     public override void Process()
     {
-        Debug.Log("call");
         degree = 1;
         coefficients = new float[degree + 1];
         coefficients[0] = initialPosition;
-        roots = new float[degree];
-        roots[0] = time;
+        answer = time;
         
         coefficients[1] = Evaluate(time);
     }
 
-    public override float Evaluate(float i)
+    public override float Evaluate(float normalizedValue)
     {
-        return coefficients[0] / roots[0];
+        return coefficients[0] / answer; // Velocity
     }
 }
 

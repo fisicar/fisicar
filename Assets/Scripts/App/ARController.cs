@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +6,17 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class ARScript : MonoBehaviour
+public class ARController : MonoBehaviour
 {
     public GameObject placementIndicator;
     public ARRaycastManager raycastManager;
-
+    public bool isPositioning { get; set; } = true;
     
     private Camera _mainCamera;
     private Vector3 _screenCenter;
     private bool _poseIsValid;
     private Pose _pose;
     private List<ARRaycastHit> _hits = new List<ARRaycastHit>();
-
     private void Awake()
     {
         if (Camera.main != null)
@@ -29,6 +28,9 @@ public class ARScript : MonoBehaviour
     
     private void Update()
     {
+        if (!isPositioning)
+            return;
+        
         UpdatePlacementPose();
         UpdatePlacementIndicator();
     }
@@ -49,6 +51,9 @@ public class ARScript : MonoBehaviour
 
     private void UpdatePlacementIndicator()
     {
+#if !UNITY_EDITOR
+        placementIndicator.gameObject.SetActive(_poseIsValid);
+#endif
         if (_poseIsValid)
         {
             placementIndicator.transform.SetPositionAndRotation(_pose.position, _pose.rotation);

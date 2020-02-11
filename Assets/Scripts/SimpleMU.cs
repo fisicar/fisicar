@@ -30,7 +30,7 @@ public class SimpleMU : Problem
     }
 }
 
-
+/* seltz was here */
 /*
 3 (SimpleMU). Uma bola se move em movimento
  retilíneo uniforme em direção a uma parede

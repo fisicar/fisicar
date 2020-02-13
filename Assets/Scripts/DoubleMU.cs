@@ -56,3 +56,4 @@ public class DoubleMU : SimpleMU
  * (Coef[0]) + (Coef[1]) * t = 0
  * t = - Coef[0] / Coef[1]
 */
+//panda was here

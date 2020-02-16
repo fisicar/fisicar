@@ -19,6 +19,8 @@ public class DoubleMU : SimpleMU
         Coefficients[1] = velocity - velocityB;
 
         Answer = -Coefficients[0] / Coefficients[1];
+        minValue = new Vector2(Mathf.Min(Evaluate(0), Evaluate(1), EvaluateB(0), EvaluateB(1)), 0);
+        maxValue = new Vector2(Mathf.Max(Evaluate(0), Evaluate(1), EvaluateB(0), EvaluateB(1)), 0);
     }
 
     public override float Evaluate(float normalizedValue)

@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
     public GameObject questionButtonPrefab;
     public GameObject questionContentArea; 
     public static event Action<ProblemDefinition> OnProblemSelected;
+    public static event Action OnBackClick;
 
     private ProblemDefinition _currentProblem;
     private int _currentScreen = 0; 
@@ -46,7 +47,6 @@ public class UIController : MonoBehaviour
             _currentScreen++;    
             SetupScreen();
         }
-        Debug.Log(_currentScreen);
     }
     
     private void LastScreen()
@@ -116,5 +116,9 @@ public class UIController : MonoBehaviour
         nextButton.gameObject.SetActive(true);
         _currentScreen--;
         SetupScreen();
+        if (OnBackClick != null)
+        {
+            OnBackClick.Invoke();
+        }
     }
 }

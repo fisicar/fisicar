@@ -17,8 +17,10 @@ public class UIController : MonoBehaviour
     public GameObject panel;
     public Button backButton2;
     public GameObject questionButtonPrefab;
-    public GameObject questionContentArea;
-    
+    public GameObject questionContentArea; 
+    public static event Action<ProblemDefinition> OnProblemSelected;
+
+    private ProblemDefinition _currentProblem;
     private int _currentScreen = 0; 
     
     public void Awake()
@@ -71,6 +73,7 @@ public class UIController : MonoBehaviour
                 NextScreen();
                 var text = contentQuestionsList.problems[i1].longDescription;
                 contentExplanation.text = text;
+                _currentProblem = contentQuestionsList.problems[i1];
             }));
 
             button.questionImage.sprite = contentQuestionsList.problems[i1].sprite;
@@ -99,6 +102,10 @@ public class UIController : MonoBehaviour
             case 3:
                 nextButton.gameObject.SetActive(false);
                 panel.SetActive(false);
+                if (OnProblemSelected != null)
+                {
+                    OnProblemSelected.Invoke(_currentProblem);
+                }
                 break;
         }
     }

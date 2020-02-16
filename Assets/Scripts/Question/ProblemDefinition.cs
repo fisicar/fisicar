@@ -13,6 +13,7 @@ public class ProblemDefinition
 
     public Problem problem;
     public Sprite sprite;
+    public GameObject[] models;
 }
 
 // Tanaka comment

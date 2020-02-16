@@ -14,7 +14,7 @@ public class Problem : ScriptableObject
 
     public virtual void Process()
     {
-        throw new NotImplementedException();
+        Debug.LogError("error");
     }
 
     public virtual float Evaluate(float normalizedValue)

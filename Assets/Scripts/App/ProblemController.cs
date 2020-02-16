@@ -14,14 +14,14 @@ public class ProblemController : MonoBehaviour
         UIController.OnProblemSelected += OnProblemSelected;
     }
 
-    private void OnProblemSelected(ProblemDefinition obj)
+    private void OnProblemSelected(ProblemDefinition currentQuestion)
     {
-        _currentProblem = obj.problem;
-        _instantiatedModels = new GameObject[obj.models.Length];
+        _currentProblem = currentQuestion.problem;
+        _instantiatedModels = new GameObject[currentQuestion.models.Length];
 
-        for (var i = 0; i < obj.models.Length; i++)
+        for (var i = 0; i < currentQuestion.models.Length; i++)
         {
-            var model = obj.models[i];
+            var model = currentQuestion.models[i];
             
             if (model != null)
             {

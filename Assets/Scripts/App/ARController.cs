@@ -59,6 +59,4 @@ public class ARController : MonoBehaviour
             placementIndicator.transform.SetPositionAndRotation(_pose.position, _pose.rotation);
         }
     }
-
-
 }

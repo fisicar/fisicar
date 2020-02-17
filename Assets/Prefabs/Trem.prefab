@@ -238,6 +238,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionText: {fileID: 8722974661327109680}
+  index: 0
+  printParenthesis: 0
+  printX: 1
+  printY: 0
+  floatPoints: 2
 --- !u!1 &4795889440641243216
 GameObject:
   m_ObjectHideFlags: 0

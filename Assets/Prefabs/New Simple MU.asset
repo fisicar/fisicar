@@ -12,15 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891f4a54c3fb7ae49a64e6e22eb55e0c, type: 3}
   m_Name: New Simple MU
   m_EditorClassIdentifier: 
-  degree: 1
-  coefficients:
-  - 5
-  - 2.5
-  roots:
-  - 2
   minValue: {x: 0, y: 0}
   maxValue: {x: 0, y: 0}
-  initialPosition: 5
-  finalPosition: 0
-  time: 2
-  velocity: 0
+  initialPosition: 0
+  finalPosition: 5
+  velocity: 2.5

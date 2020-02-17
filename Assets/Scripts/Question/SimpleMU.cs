@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
- [CreateAssetMenu(menuName = "Problems/Simple")]    
+[CreateAssetMenu(menuName = "Problems/Simple")]    
 public class SimpleMU : Problem
 {
     public float initialPosition;
     public float finalPosition;
-    public float time;
     public float velocity;
 
     [ContextMenu("Process")]
@@ -19,14 +14,16 @@ public class SimpleMU : Problem
         Degree = 1;
         Coefficients = new float[Degree + 1];
         Coefficients[0] = initialPosition;
-        Answer = time;
-        
-        Coefficients[1] = Evaluate(time);
+        Answer = (finalPosition - initialPosition) / velocity;
+        Coefficients[1] = velocity;
+        minValue = new Vector2(Mathf.Min(Evaluate(0), Evaluate(1)), 0);
+        maxValue = new Vector2(Mathf.Max(Evaluate(0), Evaluate(1)), 0);
     }
 
     public override float Evaluate(float normalizedValue)
     {
-        return Coefficients[0] / Answer; // Velocity
+        var time = normalizedValue * Answer;
+        return initialPosition + velocity * time;
     }
 }
 

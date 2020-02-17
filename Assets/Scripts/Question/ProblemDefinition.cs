@@ -14,6 +14,7 @@ public class ProblemDefinition
     public Problem problem;
     public Sprite sprite;
     public GameObject[] models;
+    public GameObject environment;
 }
 
 // Tanaka comment

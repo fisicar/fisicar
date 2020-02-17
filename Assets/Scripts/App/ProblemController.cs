@@ -7,8 +7,9 @@ public class ProblemController : MonoBehaviour
     private GameObject[] _instantiatedModels;
     public Vector2 minValue = new Vector2(-0.5f, 0);
     public Vector2 maxValue = new Vector2(0.5f, 1);
-    public GameObject plane;
     public Slider controllerSlider;
+
+    private GameObject _instantiatedEnvironment;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class ProblemController : MonoBehaviour
         {
             Destroy(_instantiatedModels[i]);
         }
+        
+        Destroy(_instantiatedEnvironment);
 
         _instantiatedModels = null;
         controllerSlider.value = 0;
@@ -33,6 +36,8 @@ public class ProblemController : MonoBehaviour
         _currentProblem = (currentQuestion.problem);
         _currentProblem.Process();
         _instantiatedModels = new GameObject[currentQuestion.models.Length];
+        
+        _instantiatedEnvironment = Instantiate(currentQuestion.environment, transform);
 
         for (var i = 0; i < currentQuestion.models.Length; i++)
         {

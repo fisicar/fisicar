@@ -24,8 +24,11 @@ public class ProblemController : MonoBehaviour
         {
             Destroy(_instantiatedModels[i]);
         }
-        
-        Destroy(_instantiatedEnvironment);
+
+        if (_instantiatedEnvironment != null)
+        {
+            Destroy(_instantiatedEnvironment);
+        }
 
         _instantiatedModels = null;
         controllerSlider.value = 0;

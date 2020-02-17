@@ -36,8 +36,11 @@ public class ProblemController : MonoBehaviour
         _currentProblem = (currentQuestion.problem);
         _currentProblem.Process();
         _instantiatedModels = new GameObject[currentQuestion.models.Length];
-        
-        _instantiatedEnvironment = Instantiate(currentQuestion.environment, transform);
+
+        if (currentQuestion.environment != null)
+        {
+            _instantiatedEnvironment = Instantiate(currentQuestion.environment, transform);
+        }
 
         for (var i = 0; i < currentQuestion.models.Length; i++)
         {

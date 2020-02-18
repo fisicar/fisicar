@@ -8,12 +8,12 @@ public class ProblemController : MonoBehaviour
     private GameObject[] _instantiatedModels;
     public Vector2 minValue = new Vector2(-0.5f, 0);
     public Vector2 maxValue = new Vector2(0.5f, 1);
-    public GameObject plane;
     public Slider controllerSlider;
-
-    public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     
+    public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2> OnModelPositionUpdate;
+    
+    private GameObject _instantiatedEnvironment;
     
     private void Awake()
     {
@@ -27,6 +27,11 @@ public class ProblemController : MonoBehaviour
         for (int i = 0; i < _instantiatedModels.Length; i++)
         {
             Destroy(_instantiatedModels[i]);
+        }
+
+        if (_instantiatedEnvironment != null)
+        {
+            Destroy(_instantiatedEnvironment);
         }
 
         _instantiatedModels = null;
@@ -43,6 +48,11 @@ public class ProblemController : MonoBehaviour
             OnMinMaxValueChange.Invoke(_currentProblem.minValue, _currentProblem.maxValue);
         }
         _instantiatedModels = new GameObject[currentQuestion.models.Length];
+
+        if (currentQuestion.environment != null)
+        {
+            _instantiatedEnvironment = Instantiate(currentQuestion.environment, transform);
+        }
 
         for (var i = 0; i < currentQuestion.models.Length; i++)
         {

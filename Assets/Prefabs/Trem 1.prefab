@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 1402677859592964213}
   - component: {fileID: 3918814616366644982}
   m_Layer: 0
-  m_Name: Trem
+  m_Name: Trem 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionText: {fileID: 8722974661327109680}
-  index: 0
+  index: 1
   printParenthesis: 0
   printX: 1
   printY: 0

@@ -10,7 +10,11 @@ using Image = UnityEngine.UIElements.Image;
 public class UIController : MonoBehaviour
 {
     public GameObject[] screens;
+    public GameObject optionsScreen;
+    public Button optionsBackButton;
     public Button nextButton;
+    public Button startButton;
+    public Button optionsButton;
     public Button backButton;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
@@ -34,9 +38,29 @@ public class UIController : MonoBehaviour
         
         SetupScreen();
         InstantiateButtons();
+        startButton.onClick.AddListener(NextScreen);
         nextButton.onClick.AddListener(NextScreen);
         backButton.onClick.AddListener(LastScreen);
+        optionsButton.onClick.AddListener(OptionsScreen);
         backButton2.onClick.AddListener(ActivatePanel);    
+        optionsBackButton.onClick.AddListener(ExitOptions);
+    }
+
+    private void ExitOptions()
+    {
+        optionsScreen.gameObject.SetActive(false);
+        gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
+        SetupScreen();
+    }
+
+    private void OptionsScreen()
+    {
+        gameObject.SetActive(false);
+        optionsScreen.gameObject.SetActive(true);
+        backButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(false);
+        
     }
 
     private void NextScreen()
@@ -86,11 +110,14 @@ public class UIController : MonoBehaviour
         {
             case 0:
                 screens[0].SetActive(true);
+                optionsButton.gameObject.SetActive(true);
                 backButton.gameObject.SetActive(false);
-                nextButton.gameObject.SetActive(true);
+                nextButton.gameObject.SetActive(false);
+                startButton.gameObject.SetActive(true);
                 break;
             case 1:
                 screens[1].SetActive(true);
+                startButton.gameObject.SetActive(false);
                 backButton.gameObject.SetActive(true);
                 nextButton.gameObject.SetActive(false);
                 break;

@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
     public GameObject panel;
-    public Button backButton2;
+    public Button backButtonAR;
     public GameObject questionButtonPrefab;
     public GameObject questionContentArea; 
     public static event Action<ProblemDefinition> OnProblemSelected;
@@ -38,29 +38,27 @@ public class UIController : MonoBehaviour
         
         SetupScreen();
         InstantiateButtons();
+        
+        //Panel
         startButton.onClick.AddListener(NextScreen);
         nextButton.onClick.AddListener(NextScreen);
         backButton.onClick.AddListener(LastScreen);
+        backButtonAR.onClick.AddListener(ActivatePanel);
+        
+        //Options Panel
         optionsButton.onClick.AddListener(OptionsScreen);
-        backButton2.onClick.AddListener(ActivatePanel);    
         optionsBackButton.onClick.AddListener(ExitOptions);
     }
 
-    private void ExitOptions()
-    {
-        optionsScreen.gameObject.SetActive(false);
-        gameObject.SetActive(true);
-        optionsButton.gameObject.SetActive(true);
-        SetupScreen();
-    }
 
     private void OptionsScreen()
     {
-        gameObject.SetActive(false);
         optionsScreen.gameObject.SetActive(true);
-        backButton.gameObject.SetActive(true);
-        optionsButton.gameObject.SetActive(false);
-        
+    }
+    private void ExitOptions()
+    {
+        optionsScreen.gameObject.SetActive(false);
+        SetupScreen();
     }
 
     private void NextScreen()

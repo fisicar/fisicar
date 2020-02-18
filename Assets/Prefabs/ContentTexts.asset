@@ -19,8 +19,9 @@ MonoBehaviour:
       para que ela chegue na parede em 2 segundos?\r\n"
     problem: {fileID: 11400000, guid: 374d6d239d6748f4593de6e8e6c87275, type: 2}
     sprite: {fileID: 21300000, guid: e563d805c6bb03741a5afdc3a3b8336c, type: 3}
-    models:
-    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
+    models: []
+    environment: {fileID: 2759467160346795482, guid: 7df6996f35f9e4d4d9864e4f60655711,
+      type: 3}
   - title: Movimento Uniforme - Trens
     longDescription: "Dois m\xEDsseis A e B, um na posi\xE7\xE3o 0m, outro na posi\xE7\xE3o
       120m, A se move com uma velocidade de 20 m/s, em dire\xE7\xE3o ao m\xEDssil
@@ -30,4 +31,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 082ad78e6fa4d0e4d83147ec01e2dd44, type: 3}
     models:
     - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
-    - {fileID: 2822890441924335189, guid: 92aa016c15c40104b8f90ea9da397a9d, type: 3}
+    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
+    environment: {fileID: 2759467160346795482, guid: 7df6996f35f9e4d4d9864e4f60655711,
+      type: 3}

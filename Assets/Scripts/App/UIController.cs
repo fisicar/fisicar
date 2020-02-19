@@ -13,7 +13,6 @@ public class UIController : MonoBehaviour
     public GameObject optionsScreen;
     public Button optionsBackButton;
     public Button nextButton;
-    public Button startButton;
     public Button optionsButton;
     public Button backButton;
     public TextMeshProUGUI contentExplanation;
@@ -40,7 +39,6 @@ public class UIController : MonoBehaviour
         InstantiateButtons();
         
         //Panel
-        startButton.onClick.AddListener(NextScreen);
         nextButton.onClick.AddListener(NextScreen);
         backButton.onClick.AddListener(LastScreen);
         backButtonAR.onClick.AddListener(ActivatePanel);
@@ -108,14 +106,13 @@ public class UIController : MonoBehaviour
         {
             case 0:
                 screens[0].SetActive(true);
-                optionsButton.gameObject.SetActive(true);
+                optionsButton.gameObject.SetActive(false);
                 backButton.gameObject.SetActive(false);
-                nextButton.gameObject.SetActive(false);
-                startButton.gameObject.SetActive(true);
+                nextButton.gameObject.SetActive(true);
                 break;
             case 1:
                 screens[1].SetActive(true);
-                startButton.gameObject.SetActive(false);
+                optionsButton.gameObject.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 nextButton.gameObject.SetActive(false);
                 break;

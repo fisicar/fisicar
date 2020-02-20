@@ -27,8 +27,7 @@ public class UIController : MonoBehaviour
     
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
-
-    public ARController ARController;
+    
     public GameObject slider;
     public enum Screen
     {
@@ -42,6 +41,7 @@ public class UIController : MonoBehaviour
 
     public static event Action<ProblemDefinition> OnProblemSelected;
     public static event Action OnBackClick;
+    public static event Action <bool> IsPositioning;
 
     private ProblemDefinition _currentProblem;
 
@@ -126,7 +126,7 @@ public class UIController : MonoBehaviour
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 screens[2].gameObject.SetActive(true);
-                ARController.isPositioning = true;
+                IsPositioning?.Invoke(true);
                 break;
 
             case Screen.Positioning:
@@ -155,8 +155,7 @@ public class UIController : MonoBehaviour
 
     private void SetPosition()
     {
-        //TODO convert to event
-        ARController.isPositioning = false;
+        IsPositioning?.Invoke(false);
         SetupScreen(Screen.ARVisualizer);
     }
 

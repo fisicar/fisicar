@@ -24,8 +24,15 @@ public class ARController : MonoBehaviour
             _mainCamera = Camera.main;
             _screenCenter = _mainCamera.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
         }
+
+        UIController.IsPositioning += UpdateIsPositioning;
     }
-    
+
+    private void UpdateIsPositioning(bool state)
+    {
+        isPositioning = state;
+    }
+
     private void Update()
     {
         if (!isPositioning)

@@ -24,7 +24,9 @@ public class UIController : MonoBehaviour
     public Button backButton;
     public GameObject questionButtonPrefab;
     public GameObject questionContentArea;
-    
+    public Button repositionButton;
+
+    public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
     
@@ -44,6 +46,7 @@ public class UIController : MonoBehaviour
     public static event Action <bool> IsPositioning;
 
     private ProblemDefinition _currentProblem;
+    private bool _isPlacementPositioned;
 
     public void Awake()
     {
@@ -51,12 +54,20 @@ public class UIController : MonoBehaviour
 
         SetupScreen(currentScreen);
         InstantiateButtons();
+        
+        repositionButton.onClick.AddListener(RepositioningPlane);
 
         //Panel
         backButton.onClick.AddListener(BackButtonClick);
 
         //Options Panel
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+    }
+
+    private void RepositioningPlane()
+    {
+        SetupScreen(Screen.Positioning);
+        _isPlacementPositioned = false;
     }
 
     private void BackButtonClick()
@@ -122,19 +133,23 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.Explanation:
-                EnableNextButton("Visualizar RA", () => SetupScreen(Screen.Positioning));
+                EnableNextButton("Visualizar RA", () =>
+                {
+                    OnProblemSelected?.Invoke(_currentProblem);
+                    SetupScreen(_isPlacementPositioned ? Screen.ARVisualizer : Screen.Positioning);
+                });
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 screens[2].gameObject.SetActive(true);
-                IsPositioning?.Invoke(true);
                 break;
 
             case Screen.Positioning:
-                OnProblemSelected?.Invoke(_currentProblem);
+                IsPositioning ? .Invoke(true);
                 EnableNextButton("Posicionar", SetPosition);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 contentArea.SetActive(false);
+                slider.SetActive(false);
                 break;
 
             case Screen.ARVisualizer:
@@ -146,6 +161,7 @@ public class UIController : MonoBehaviour
             case Screen.Settings:
                 optionsScreen.SetActive(true);
                 backButton.gameObject.SetActive(true);
+                ARArea.SetActive(previousScreen == Screen.ARVisualizer); // Can be improved
                 break;
 
             default:
@@ -155,6 +171,7 @@ public class UIController : MonoBehaviour
 
     private void SetPosition()
     {
+        _isPlacementPositioned = true;
         IsPositioning?.Invoke(false);
         SetupScreen(Screen.ARVisualizer);
     }
@@ -181,6 +198,7 @@ public class UIController : MonoBehaviour
                 var text = contentQuestionsList.problems[i1].longDescription;
                 contentExplanation.text = text;
                 _currentProblem = contentQuestionsList.problems[i1];
+                _isPlacementPositioned = false;
             });
 
             button.questionImage.sprite = contentQuestionsList.problems[i1].sprite;

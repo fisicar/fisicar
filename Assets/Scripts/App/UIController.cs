@@ -71,7 +71,6 @@ public class UIController : MonoBehaviour
                 contentArea.SetActive(false);
                 SetupScreen(Screen.Explanation);
                 OnBackClick?.Invoke();
-                ARController.isPositioning = true;
                 break;
             
             case Screen.ARVisualizer:
@@ -79,7 +78,6 @@ public class UIController : MonoBehaviour
                 slider.SetActive(false);
                 SetupScreen(Screen.Explanation);
                 OnBackClick?.Invoke();
-                ARController.isPositioning = true;
                 break;
             
             case Screen.Settings:
@@ -128,14 +126,15 @@ public class UIController : MonoBehaviour
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 screens[2].gameObject.SetActive(true);
+                ARController.isPositioning = true;
                 break;
 
             case Screen.Positioning:
+                OnProblemSelected?.Invoke(_currentProblem);
                 EnableNextButton("Posicionar", SetPosition);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 contentArea.SetActive(false);
-                OnProblemSelected?.Invoke(_currentProblem);
                 break;
 
             case Screen.ARVisualizer:
@@ -157,7 +156,7 @@ public class UIController : MonoBehaviour
     private void SetPosition()
     {
         //TODO convert to event
-        ARController.poseIsValid = false;
+        ARController.isPositioning = false;
         SetupScreen(Screen.ARVisualizer);
     }
 
@@ -177,28 +176,16 @@ public class UIController : MonoBehaviour
             var button = instantiatedButton.GetComponent<QuestionButton>();
 
             var i1 = i;
-            button.questionButton.onClick.AddListener((() =>
+            button.questionButton.onClick.AddListener(() =>
             {
                 SetupScreen(Screen.Explanation);
                 var text = contentQuestionsList.problems[i1].longDescription;
                 contentExplanation.text = text;
                 _currentProblem = contentQuestionsList.problems[i1];
-            }));
+            });
 
             button.questionImage.sprite = contentQuestionsList.problems[i1].sprite;
             button.titleText.text = contentQuestionsList.problems[i1].title;
         }
     }
 }
-
-
-/*
- *             case 3:
-                nextButton.gameObject.SetActive(false);
-                panel.SetActive(false);
-                if (OnProblemSelected != null)
-                {
-                    OnProblemSelected.Invoke(_currentProblem);
-                }
-                break;
- */

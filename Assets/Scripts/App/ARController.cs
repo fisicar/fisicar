@@ -10,11 +10,11 @@ public class ARController : MonoBehaviour
 {
     public GameObject placementIndicator;
     public ARRaycastManager raycastManager;
+    public bool poseIsValid;
     public bool isPositioning { get; set; } = true;
     
     private Camera _mainCamera;
     private Vector3 _screenCenter;
-    private bool _poseIsValid;
     private Pose _pose;
     private List<ARRaycastHit> _hits = new List<ARRaycastHit>();
     private void Awake()
@@ -38,9 +38,9 @@ public class ARController : MonoBehaviour
     private void UpdatePlacementPose()
     {
         raycastManager.Raycast(_screenCenter, _hits, TrackableType.Planes);
-        _poseIsValid = _hits.Count > 0;
+        poseIsValid = _hits.Count > 0;
         
-        if (_poseIsValid)
+        if (poseIsValid)
         {
             _pose = _hits[0].pose;
             var cameraForward = _mainCamera.transform.forward;
@@ -52,9 +52,9 @@ public class ARController : MonoBehaviour
     private void UpdatePlacementIndicator()
     {
 #if !UNITY_EDITOR
-        placementIndicator.gameObject.SetActive(_poseIsValid);
+        placementIndicator.gameObject.SetActive(poseIsValid);
 #endif
-        if (_poseIsValid)
+        if (poseIsValid)
         {
             placementIndicator.transform.SetPositionAndRotation(_pose.position, _pose.rotation);
         }

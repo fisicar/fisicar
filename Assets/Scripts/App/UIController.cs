@@ -9,88 +9,177 @@ using Image = UnityEngine.UIElements.Image;
 
 public class UIController : MonoBehaviour
 {
+    //screens
     public GameObject[] screens;
     public GameObject optionsScreen;
-    public Button optionsBackButton;
+    public Screen currentScreen = Screen.About;
+    public Screen previousScreen;    public GameObject panel;
+    public GameObject footer;
+    public GameObject contentArea;
+    
+    //buttons
     public Button nextButton;
-    public Button optionsButton;
+    public TextMeshProUGUI nextButtonText;
+    public Button settingButton;
     public Button backButton;
+    public GameObject questionButtonPrefab;
+    public GameObject questionContentArea;
+    
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
-    public GameObject panel;
-    public Button backButtonAR;
-    public GameObject questionButtonPrefab;
-    public GameObject questionContentArea; 
+
+    public ARController ARController;
+    public GameObject slider;
+    public enum Screen
+    {
+        About,
+        ContentList,
+        Explanation,
+        Positioning,
+        ARVisualizer,
+        Settings,
+    }
+
     public static event Action<ProblemDefinition> OnProblemSelected;
     public static event Action OnBackClick;
 
     private ProblemDefinition _currentProblem;
-    private int _currentScreen = 0; 
-    
+
     public void Awake()
     {
+        panel.gameObject.SetActive(true);
+
+        SetupScreen(currentScreen);
+        InstantiateButtons();
+
+        //Panel
+        backButton.onClick.AddListener(BackButtonClick);
+
+        //Options Panel
+        settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+    }
+
+    private void BackButtonClick()
+    {
+        switch (currentScreen)
+        {
+            case Screen.Explanation:
+                SetupScreen(Screen.ContentList);
+                break;
+            
+            case Screen.Positioning:
+                contentArea.SetActive(false);
+                SetupScreen(Screen.Explanation);
+                OnBackClick?.Invoke();
+                ARController.isPositioning = true;
+                break;
+            
+            case Screen.ARVisualizer:
+                contentArea.SetActive(false);
+                slider.SetActive(false);
+                SetupScreen(Screen.Explanation);
+                OnBackClick?.Invoke();
+                ARController.isPositioning = true;
+                break;
+            
+            case Screen.Settings:
+                SetupScreen(previousScreen);
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+    
+    private void SetupScreen(Screen newScreen)
+    {
+        backButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+        settingButton.gameObject.SetActive(false);
+        contentArea.SetActive(true);
+        footer.SetActive(true);
+
         foreach (var t in screens)
         {
             t.gameObject.SetActive(false);
         }
-        panel.gameObject.SetActive(true);
-        
-        SetupScreen();
-        InstantiateButtons();
-        
-        //Panel
-        nextButton.onClick.AddListener(NextScreen);
-        backButton.onClick.AddListener(LastScreen);
-        backButtonAR.onClick.AddListener(ActivatePanel);
-        
-        //Options Panel
-        optionsButton.onClick.AddListener(OptionsScreen);
-        optionsBackButton.onClick.AddListener(ExitOptions);
-    }
 
-
-    private void OptionsScreen()
-    {
-        optionsScreen.gameObject.SetActive(true);
-    }
-    private void ExitOptions()
-    {
         optionsScreen.gameObject.SetActive(false);
-        SetupScreen();
+
+        previousScreen = currentScreen;
+        currentScreen = newScreen;
+
+        switch (newScreen)
+        {
+            case Screen.About:
+                EnableNextButton("Continuar", () => SetupScreen(Screen.ContentList));
+                settingButton.gameObject.SetActive(true);
+                screens[0].gameObject.SetActive(true);
+                break;
+
+            case Screen.ContentList:
+                footer.SetActive(false);
+                settingButton.gameObject.SetActive(true);
+                screens[1].gameObject.SetActive(true);
+                break;
+
+            case Screen.Explanation:
+                EnableNextButton("Visualizar RA", () => SetupScreen(Screen.Positioning));
+                backButton.gameObject.SetActive(true);
+                settingButton.gameObject.SetActive(true);
+                screens[2].gameObject.SetActive(true);
+                break;
+
+            case Screen.Positioning:
+                EnableNextButton("Posicionar", SetPosition);
+                backButton.gameObject.SetActive(true);
+                settingButton.gameObject.SetActive(true);
+                contentArea.SetActive(false);
+                OnProblemSelected?.Invoke(_currentProblem);
+                break;
+
+            case Screen.ARVisualizer:
+                backButton.gameObject.SetActive(true);
+                settingButton.gameObject.SetActive(true);
+                slider.SetActive(true);
+                break;
+
+            case Screen.Settings:
+                optionsScreen.SetActive(true);
+                backButton.gameObject.SetActive(true);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newScreen), newScreen, null);
+        }
     }
 
-    private void NextScreen()
+    private void SetPosition()
     {
-        if (_currentScreen < screens.Length)
-        {
-            screens[_currentScreen].SetActive(false);
-            _currentScreen++;    
-            SetupScreen();
-        }
+        //TODO convert to event
+        ARController.poseIsValid = false;
+        SetupScreen(Screen.ARVisualizer);
+    }
+
+    private void EnableNextButton(string title, Action onClickAction)
+    {
+        nextButton.gameObject.SetActive(true);
+        nextButton.onClick.RemoveAllListeners();
+        nextButton.onClick.AddListener(() => onClickAction?.Invoke());
+        nextButtonText.text = title;
     }
     
-    private void LastScreen()
-    {
-        if (_currentScreen >= 0)
-        {
-            screens[_currentScreen].SetActive(false);
-            _currentScreen--;
-            SetupScreen();
-        }
-        Debug.Log(_currentScreen);
-    }
-
     private void InstantiateButtons()
     {
         for (var i = 0; i < contentQuestionsList.problems.Length; i++)
         {
-            var instantiatedButton = Instantiate(questionButtonPrefab,questionContentArea.transform);
+            var instantiatedButton = Instantiate(questionButtonPrefab, questionContentArea.transform);
             var button = instantiatedButton.GetComponent<QuestionButton>();
 
             var i1 = i;
             button.questionButton.onClick.AddListener((() =>
             {
-                NextScreen();
+                SetupScreen(Screen.Explanation);
                 var text = contentQuestionsList.problems[i1].longDescription;
                 contentExplanation.text = text;
                 _currentProblem = contentQuestionsList.problems[i1];
@@ -100,28 +189,11 @@ public class UIController : MonoBehaviour
             button.titleText.text = contentQuestionsList.problems[i1].title;
         }
     }
-    private void SetupScreen()
-    {
-        switch (_currentScreen)
-        {
-            case 0:
-                screens[0].SetActive(true);
-                optionsButton.gameObject.SetActive(false);
-                backButton.gameObject.SetActive(false);
-                nextButton.gameObject.SetActive(true);
-                break;
-            case 1:
-                screens[1].SetActive(true);
-                optionsButton.gameObject.SetActive(true);
-                backButton.gameObject.SetActive(true);
-                nextButton.gameObject.SetActive(false);
-                break;
-            case 2:
-                screens[2].SetActive(true);
-                nextButton.gameObject.SetActive(true);
-                panel.SetActive(true);
-                break;
-            case 3:
+}
+
+
+/*
+ *             case 3:
                 nextButton.gameObject.SetActive(false);
                 panel.SetActive(false);
                 if (OnProblemSelected != null)
@@ -129,18 +201,4 @@ public class UIController : MonoBehaviour
                     OnProblemSelected.Invoke(_currentProblem);
                 }
                 break;
-        }
-    }
-    
-    private void ActivatePanel()
-    {
-        panel.SetActive(true);
-        nextButton.gameObject.SetActive(true);
-        _currentScreen--;
-        SetupScreen();
-        if (OnBackClick != null)
-        {
-            OnBackClick.Invoke();
-        }
-    }
-}
+ */

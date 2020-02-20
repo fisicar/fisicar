@@ -24,9 +24,13 @@ public class ProblemController : MonoBehaviour
 
     private void UIControllerOnOnBackClick()
     {
-        for (int i = 0; i < _instantiatedModels.Length; i++)
-        {
-            Destroy(_instantiatedModels[i]);
+        
+        if(_instantiatedModels != null)
+        { 
+            for (int i = 0; i < _instantiatedModels.Length; i++)
+            {
+                Destroy(_instantiatedModels[i]);
+            }
         }
 
         if (_instantiatedEnvironment != null)

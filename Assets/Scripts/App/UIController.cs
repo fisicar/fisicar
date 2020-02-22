@@ -25,7 +25,10 @@ public class UIController : MonoBehaviour
     public GameObject questionButtonPrefab;
     public GameObject questionContentArea;
     public Button repositionButton;
+    public Button closeInstructionButton;
+    public Button openInstructionButton;
 
+    public GameObject instructionArea;
     public TextMeshProUGUI title;
     public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
@@ -57,12 +60,24 @@ public class UIController : MonoBehaviour
         InstantiateButtons();
         
         repositionButton.onClick.AddListener(RepositioningPlane);
-
-        //Panel
+        closeInstructionButton.onClick.AddListener(CloseInstruction);
+        openInstructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
-
-        //Options Panel
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+    }
+
+    private void OpenInstruction()
+    {
+        instructionArea.SetActive(true);
+        openInstructionButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+    }
+
+    private void CloseInstruction()
+    {
+        EnableNextButton("Posicionar", SetPosition);
+        instructionArea.SetActive(false);
+        openInstructionButton.gameObject.SetActive(true);
     }
 
     private void RepositioningPlane()
@@ -105,6 +120,8 @@ public class UIController : MonoBehaviour
     {
         backButton.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
+        openInstructionButton.gameObject.SetActive(false);
+        
         settingButton.gameObject.SetActive(false);
         contentArea.SetActive(true);
         footer.SetActive(true);
@@ -148,7 +165,7 @@ public class UIController : MonoBehaviour
 
             case Screen.Positioning:
                 IsPositioning ? .Invoke(true);
-                EnableNextButton("Posicionar", SetPosition);
+                instructionArea.SetActive(true);
                 UpdateTitle("Posicionar o plano");
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);

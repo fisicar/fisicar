@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd42c3e08d8284f4aa1a41f39a329a76, type: 3}
-  m_Name: New Double MU
+  m_Name: Movmento Uniforme - Carros
   m_EditorClassIdentifier: 
   minValue: {x: 0, y: 0}
-  maxValue: {x: 0, y: 0}
+  maxValue: {x: 120, y: 0}
   initialPosition: 0
   finalPosition: 0
-  time: 0
   velocity: 20
   initialPositionB: 120
   finalPositionB: 0

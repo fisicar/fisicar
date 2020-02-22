@@ -33,7 +33,7 @@ public class UIController : MonoBehaviour
     public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
-    
+    public TextMeshProUGUI sliderText;
     public GameObject slider;
     public enum Screen
     {
@@ -51,6 +51,7 @@ public class UIController : MonoBehaviour
 
     private ProblemDefinition _currentProblem;
     private bool _isPlacementPositioned;
+    private float _answer;
 
     public void Awake()
     {
@@ -64,6 +65,9 @@ public class UIController : MonoBehaviour
         openInstructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+
+        ProblemController.OnAnswerValueChange += f => _answer = f;
+        ProblemController.OnSliderValueChange += f => sliderText.text = (f * _answer).ToString("F1") + " s";
     }
 
     private void OpenInstruction()
@@ -140,33 +144,37 @@ public class UIController : MonoBehaviour
         {
             case Screen.About:
                 EnableNextButton("Continuar", () => SetupScreen(Screen.ContentList));
+                
                 settingButton.gameObject.SetActive(true);
                 screens[0].gameObject.SetActive(true);
                 break;
 
             case Screen.ContentList:
                 UpdateTitle("Selecione o assunto");
+                
                 footer.SetActive(false);
                 settingButton.gameObject.SetActive(true);
                 screens[1].gameObject.SetActive(true);
                 break;
 
             case Screen.Explanation:
-                EnableNextButton("Visualizar RA", () =>
+                UpdateTitle("Sobre o problema");
+                EnableNextButton("Visualizar em RA", () =>
                 {
                     OnProblemSelected?.Invoke(_currentProblem);
                     SetupScreen(_isPlacementPositioned ? Screen.ARVisualizer : Screen.Positioning);
                 });
-                UpdateTitle("Sobre o problema");
+                
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 screens[2].gameObject.SetActive(true);
                 break;
 
             case Screen.Positioning:
-                IsPositioning ? .Invoke(true);
-                instructionArea.SetActive(true);
+                IsPositioning?.Invoke(true);
                 UpdateTitle("Posicionar o plano");
+                
+                instructionArea.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 contentArea.SetActive(false);
@@ -175,6 +183,7 @@ public class UIController : MonoBehaviour
 
             case Screen.ARVisualizer:
                 UpdateTitle("Movimento uniforme");
+                
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 slider.SetActive(true);
@@ -182,6 +191,7 @@ public class UIController : MonoBehaviour
 
             case Screen.Settings:
                 UpdateTitle("Configurações");
+                
                 optionsScreen.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 ARArea.SetActive(previousScreen == Screen.ARVisualizer); // Can be improved

@@ -7,7 +7,7 @@ public class Problem : ScriptableObject
 {
     protected int Degree;
     protected float[] Coefficients;
-    protected float Answer;
+    public float Answer;
 
     public Vector2 minValue;
     public Vector2 maxValue;

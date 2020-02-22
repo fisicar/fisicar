@@ -12,7 +12,8 @@ public class ProblemController : MonoBehaviour
     
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2> OnModelPositionUpdate;
-    
+    public static event Action<float> OnSliderValueChange;
+    public static event Action<float> OnAnswerValueChange; 
     private GameObject _instantiatedEnvironment;
     
     private void Awake()
@@ -46,6 +47,8 @@ public class ProblemController : MonoBehaviour
     {
         _currentProblem = (currentQuestion.problem);
         _currentProblem.Process();
+        
+        OnAnswerValueChange?.Invoke(_currentProblem.Answer);
 
         if (OnMinMaxValueChange != null)
         {
@@ -73,6 +76,8 @@ public class ProblemController : MonoBehaviour
 
     private void UpdatePosition(float normalizedValue)
     {
+        OnSliderValueChange?.Invoke(normalizedValue);
+
         if (_instantiatedModels == null || _instantiatedModels.Length <= 0)
             return;
 

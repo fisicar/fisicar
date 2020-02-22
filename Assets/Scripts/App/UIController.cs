@@ -25,7 +25,11 @@ public class UIController : MonoBehaviour
     public GameObject questionButtonPrefab;
     public GameObject questionContentArea;
     public Button repositionButton;
+    public Button closeInstructionButton;
+    public Button openInstructionButton;
 
+    public GameObject instructionArea;
+    public TextMeshProUGUI title;
     public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
@@ -56,12 +60,24 @@ public class UIController : MonoBehaviour
         InstantiateButtons();
         
         repositionButton.onClick.AddListener(RepositioningPlane);
-
-        //Panel
+        closeInstructionButton.onClick.AddListener(CloseInstruction);
+        openInstructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
-
-        //Options Panel
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+    }
+
+    private void OpenInstruction()
+    {
+        instructionArea.SetActive(true);
+        openInstructionButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+    }
+
+    private void CloseInstruction()
+    {
+        EnableNextButton("Posicionar", SetPosition);
+        instructionArea.SetActive(false);
+        openInstructionButton.gameObject.SetActive(true);
     }
 
     private void RepositioningPlane()
@@ -104,6 +120,8 @@ public class UIController : MonoBehaviour
     {
         backButton.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
+        openInstructionButton.gameObject.SetActive(false);
+        
         settingButton.gameObject.SetActive(false);
         contentArea.SetActive(true);
         footer.SetActive(true);
@@ -127,6 +145,7 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.ContentList:
+                UpdateTitle("Selecione o assunto");
                 footer.SetActive(false);
                 settingButton.gameObject.SetActive(true);
                 screens[1].gameObject.SetActive(true);
@@ -138,6 +157,7 @@ public class UIController : MonoBehaviour
                     OnProblemSelected?.Invoke(_currentProblem);
                     SetupScreen(_isPlacementPositioned ? Screen.ARVisualizer : Screen.Positioning);
                 });
+                UpdateTitle("Sobre o problema");
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 screens[2].gameObject.SetActive(true);
@@ -145,7 +165,8 @@ public class UIController : MonoBehaviour
 
             case Screen.Positioning:
                 IsPositioning ? .Invoke(true);
-                EnableNextButton("Posicionar", SetPosition);
+                instructionArea.SetActive(true);
+                UpdateTitle("Posicionar o plano");
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 contentArea.SetActive(false);
@@ -153,20 +174,28 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.ARVisualizer:
+                UpdateTitle("Movimento uniforme");
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 slider.SetActive(true);
                 break;
 
             case Screen.Settings:
+                UpdateTitle("Configurações");
                 optionsScreen.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 ARArea.SetActive(previousScreen == Screen.ARVisualizer); // Can be improved
+                slider.SetActive(false);
                 break;
 
             default:
                 throw new ArgumentOutOfRangeException(nameof(newScreen), newScreen, null);
         }
+    }
+
+    private void UpdateTitle(string newTitle)
+    {
+        title.text = newTitle;
     }
 
     private void SetPosition()

@@ -1766,7 +1766,6 @@ MonoBehaviour:
     type: 3}
   questionContentArea: {fileID: 1855883381}
   repositionButton: {fileID: 1129874190}
-  closeInstructionButton: {fileID: 0}
   instructionButton: {fileID: 242852568}
   instructionArea: {fileID: 2119596157}
   title: {fileID: 356501978}

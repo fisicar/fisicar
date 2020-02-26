@@ -54,6 +54,7 @@ public class UIController : MonoBehaviour
 
     public void Awake()
     {
+        UnityEngine.Screen.sleepTimeout = SleepTimeout.NeverSleep;
         panel.gameObject.SetActive(true);
 
         SetupScreen(currentScreen);

@@ -1,8 +1,9 @@
-﻿Shader "Unlit/InvertColorUnlit"
+﻿Shader "Unlit/InvertColor"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _colorValues ("Color 2", Color) = (0,0,0,0)
     }
     SubShader
     {
@@ -34,6 +35,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _colorValues;
 
             v2f vert (appdata v)
             {
@@ -47,7 +49,12 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv) * -1 + (0,0,0,1);
+                fixed4 col = tex2D(_MainTex, i.uv);
+                
+                _colorValues = col;
+                
+                col = col * -1 + 2*_colorValues.x;
+                
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;

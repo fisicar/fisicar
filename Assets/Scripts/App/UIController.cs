@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour
     public Button repositionButton;
     public Button instructionButton;
 
+    public Toggle invertColor;
     public GameObject instructionArea;
     public TextMeshProUGUI title;
     public GameObject ARArea;
@@ -31,6 +32,7 @@ public class UIController : MonoBehaviour
     public ContentList contentQuestionsList;
     public TextMeshProUGUI sliderText;
     public GameObject slider;
+    public ReplacementShaderEffect invertShaderScript;
 
     public enum Screen
     {
@@ -64,6 +66,7 @@ public class UIController : MonoBehaviour
         instructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+        invertColor.onValueChanged.AddListener((invertState => invertShaderScript.enabled = invertState));
 
         ProblemController.OnAnswerValueChange += f => _answer = f;
         ProblemController.OnSliderValueChange += f => sliderText.text = (f * _answer).ToString("F1") + " s";

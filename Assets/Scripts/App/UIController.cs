@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public float playTime = 3;
     public float minRealSize = 0.2f;
     public float maxRealSize = 0.3f;
     [Range(0, 1)] public float initialValue = 0.5f;
@@ -27,6 +29,7 @@ public class UIController : MonoBehaviour
     public GameObject questionContentArea;
     public Button repositionButton;
     public Button instructionButton;
+    public Button playButton;
 
     [Header("???")]
     public Slider scaleSlider;
@@ -40,6 +43,8 @@ public class UIController : MonoBehaviour
     public GameObject slider;
     public ReplacementShaderEffect invertShaderScript;
     public Transform placement;
+    public Sprite[] playSprites;
+    public Image playImage;
 
     public enum Screen
     {
@@ -55,11 +60,13 @@ public class UIController : MonoBehaviour
     public static event Action<ProblemDefinition> OnProblemSelected;
     public static event Action OnBackClick;
     public static event Action<bool> IsPositioning;
+    public static event Action<float> OnPlayClick;
 
     private ProblemDefinition _currentProblem;
     private bool _isPlacementPositioned;
     private float _answer;
     private bool _instructionClosed = false;
+    private Coroutine _playCoroutine;
 
     public void Awake()
     {
@@ -73,6 +80,8 @@ public class UIController : MonoBehaviour
         instructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+        playButton.onClick.AddListener(OnPlay);
+        
         invertColor.onValueChanged.AddListener((invertState => invertShaderScript.enabled = invertState));
         scaleSlider.onValueChanged.AddListener(ScalingPlacement);
 
@@ -82,6 +91,47 @@ public class UIController : MonoBehaviour
         ProblemController.OnSliderValueChange += f => sliderText.text = (f * _answer).ToString("F1") + " s";
     }
 
+    private IEnumerator PlayScene()
+    {
+        var lerp = ProblemController.getSliderValue.Invoke();
+
+        if (Math.Abs(lerp - 1) < 0.01)
+        {
+            lerp = 0;
+        }
+        
+        do
+        {
+            lerp += Time.deltaTime / playTime;
+            OnPlayClick?.Invoke(lerp);
+            yield return null;
+            
+        } while (lerp < 1);
+        
+        UpdatePlaySprite(2);
+        _playCoroutine = null;
+    }
+
+    private void OnPlay()
+    {
+        if (_playCoroutine != null)
+        {
+            StopCoroutine(_playCoroutine);
+            _playCoroutine = null;
+            UpdatePlaySprite(0);
+        }
+        else
+        {
+            UpdatePlaySprite(1);
+            _playCoroutine = StartCoroutine(nameof(PlayScene));
+        }
+    }
+
+    private void UpdatePlaySprite(int i)
+    {
+        playImage.sprite = playSprites[i];
+    }
+    
     private void ScalingPlacement(float normalizedValue)
     {
         var finalScale = Mathf.Lerp(minRealSize, maxRealSize, normalizedValue);

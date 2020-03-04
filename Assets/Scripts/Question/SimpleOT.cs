@@ -34,7 +34,6 @@ public class SimpleOT : Problem
     }
     public override float Evaluate(float normalizedValue)
     {
-        Debug.Log("EvaluateY: " + _movementY.Evaluate(normalizedValue));
         return _movementX.Evaluate(normalizedValue);
     }
     

@@ -14,21 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   problems:
   - title: Movimento Uniforme
-    longDescription: "Uma bola se move em movimento retil\xEDneo uniforme em dire\xE7\xE3o
-      a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual a velocidade da bola
-      para que ela chegue na parede em 2 segundos?\r\n"
+    longDescription: "Um carro se move em movimento retil\xEDneo uniforme em dire\xE7\xE3o
+      a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual a velocidade do carro
+      para que ele chegue na parede em 2 segundos?\r\n"
     problem: {fileID: 11400000, guid: 374d6d239d6748f4593de6e8e6c87275, type: 2}
     sprite: {fileID: 21300000, guid: e563d805c6bb03741a5afdc3a3b8336c, type: 3}
-    models: []
+    models:
+    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
     environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
       type: 3}
   - title: Movimento Uniforme - Carros
-    longDescription: "Dois m\xEDsseis A e B, um na posi\xE7\xE3o 0m, outro na posi\xE7\xE3o
-      120m, A se move com uma velocidade de 20 m/s, em dire\xE7\xE3o ao m\xEDssil
-      B, e B se move com uma velocidade de 40 m/s em dire\xE7\xE3o ao m\xEDssil A,
-      a que ponto eles ir\xE3o colidir?"
+    longDescription: "Dois carros A e B, um na posi\xE7\xE3o 0m, outro na posi\xE7\xE3o
+      120m,o carro A se move com uma velocidade de 20 m/s, em dire\xE7\xE3o ao carro
+      B, e o carro B se move com uma velocidade de 40 m/s em dire\xE7\xE3o ao carro
+      A, a que ponto eles ir\xE3o colidir?"
     problem: {fileID: 11400000, guid: 03d380a5fc4921d46b1604216f2e40d9, type: 2}
-    sprite: {fileID: 21300000, guid: 082ad78e6fa4d0e4d83147ec01e2dd44, type: 3}
+    sprite: {fileID: 21300000, guid: 012143533d0d6b6499cc9034e928ea57, type: 3}
     models:
     - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
     - {fileID: 2822890441924335189, guid: 92aa016c15c40104b8f90ea9da397a9d, type: 3}

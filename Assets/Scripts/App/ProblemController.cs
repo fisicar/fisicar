@@ -13,7 +13,9 @@ public class ProblemController : MonoBehaviour
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2> OnModelPositionUpdate;
     public static event Action<float> OnSliderValueChange;
-    public static event Action<float> OnAnswerValueChange; 
+    public static event Action<float> OnAnswerValueChange;
+    public static Func<float> getSliderValue;
+    
     private GameObject _instantiatedEnvironment;
     
     private void Awake()
@@ -21,6 +23,13 @@ public class ProblemController : MonoBehaviour
         controllerSlider.onValueChanged.AddListener(UpdatePosition);
         UIController.OnProblemSelected += OnProblemSelected;
         UIController.OnBackClick += UIControllerOnOnBackClick;
+        UIController.OnPlayClick += UIControllerOnPlayClick;
+        getSliderValue += () => controllerSlider.value;
+    }
+
+    private void UIControllerOnPlayClick(float normalizedValue)
+    {
+        controllerSlider.value = normalizedValue;
     }
 
     private void UIControllerOnOnBackClick()

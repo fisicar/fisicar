@@ -1746,6 +1746,11 @@ MonoBehaviour:
   slider: {fileID: 2050563349}
   invertShaderScript: {fileID: 251630076}
   placement: {fileID: 223974227}
+  playSprites:
+  - {fileID: 21300000, guid: 3108e8cf75d7a9c44af64e05b9b3c40a, type: 3}
+  - {fileID: 21300000, guid: d79b6e960b359624899456b0ca3a5cf1, type: 3}
+  - {fileID: 21300000, guid: 1595d03cde3bb1341b9270d98be8970d, type: 3}
+  playImage: {fileID: 637157614}
 --- !u!114 &366033724
 MonoBehaviour:
   m_ObjectHideFlags: 0

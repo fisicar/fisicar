@@ -43,6 +43,8 @@ public class UIController : MonoBehaviour
     public GameObject slider;
     public ReplacementShaderEffect invertShaderScript;
     public Transform placement;
+    public Sprite[] playSprites;
+    public Image playImage;
 
     public enum Screen
     {
@@ -91,16 +93,22 @@ public class UIController : MonoBehaviour
 
     private IEnumerator PlayScene()
     {
-        //TODO add pause
         var lerp = ProblemController.getSliderValue.Invoke();
+
+        if (Math.Abs(lerp - 1) < 0.01)
+        {
+            lerp = 0;
+        }
+        
         do
         {
             lerp += Time.deltaTime / playTime;
             OnPlayClick?.Invoke(lerp);
             yield return null;
             
-        } while (lerp <= 1);
-
+        } while (lerp < 1);
+        
+        UpdatePlaySprite(2);
         _playCoroutine = null;
     }
 
@@ -110,12 +118,18 @@ public class UIController : MonoBehaviour
         {
             StopCoroutine(_playCoroutine);
             _playCoroutine = null;
-            //TODO update button visual
+            UpdatePlaySprite(0);
         }
         else
         {
+            UpdatePlaySprite(1);
             _playCoroutine = StartCoroutine(nameof(PlayScene));
         }
+    }
+
+    private void UpdatePlaySprite(int i)
+    {
+        playImage.sprite = playSprites[i];
     }
     
     private void ScalingPlacement(float normalizedValue)

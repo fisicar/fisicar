@@ -307,6 +307,8 @@ public class UIController : MonoBehaviour
     {
         for (var i = 0; i < contentQuestionsList.problems.Length; i++)
         {
+            if (contentQuestionsList.problems[i].isActive != true) continue;
+            
             var instantiatedButton = Instantiate(questionButtonPrefab, questionContentArea.transform);
             var button = instantiatedButton.GetComponent<QuestionButton>();
 

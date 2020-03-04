@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    //screens
+    public float minRealSize = 0.2f;
+    public float maxRealSize = 0.3f;
+    [Range(0, 1)] public float initialValue = 0.5f;
+
+    [Header("Screens")]
     public GameObject[] screens;
     public GameObject optionsScreen;
     public Screen currentScreen = Screen.About;
@@ -14,7 +18,7 @@ public class UIController : MonoBehaviour
     public GameObject footer;
     public GameObject contentArea;
 
-    //buttons
+    [Header("Buttons")]
     public Button nextButton;
     public TextMeshProUGUI nextButtonText;
     public Button settingButton;
@@ -24,6 +28,8 @@ public class UIController : MonoBehaviour
     public Button repositionButton;
     public Button instructionButton;
 
+    [Header("???")]
+    public Slider scaleSlider;
     public Toggle invertColor;
     public GameObject instructionArea;
     public TextMeshProUGUI title;
@@ -33,6 +39,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI sliderText;
     public GameObject slider;
     public ReplacementShaderEffect invertShaderScript;
+    public Transform placement;
 
     public enum Screen
     {
@@ -67,9 +74,18 @@ public class UIController : MonoBehaviour
         backButton.onClick.AddListener(BackButtonClick);
         settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
         invertColor.onValueChanged.AddListener((invertState => invertShaderScript.enabled = invertState));
+        scaleSlider.onValueChanged.AddListener(ScalingPlacement);
+
+        scaleSlider.value = initialValue;
 
         ProblemController.OnAnswerValueChange += f => _answer = f;
         ProblemController.OnSliderValueChange += f => sliderText.text = (f * _answer).ToString("F1") + " s";
+    }
+
+    private void ScalingPlacement(float normalizedValue)
+    {
+        var finalScale = Mathf.Lerp(minRealSize, maxRealSize, normalizedValue);
+        placement.localScale = Vector3.one * finalScale;
     }
 
     private void OpenInstruction()
@@ -122,6 +138,7 @@ public class UIController : MonoBehaviour
         settingButton.gameObject.SetActive(false);
         contentArea.SetActive(true);
         footer.SetActive(true);
+        scaleSlider.gameObject.SetActive(false);
 
         foreach (var t in screens)
         {
@@ -186,6 +203,7 @@ public class UIController : MonoBehaviour
                 UpdateTitle("Posicionar o plano");
                 EnableNextButton("Posicionar", SetPosition);
 
+                scaleSlider.gameObject.SetActive(true);
                 instructionButton.gameObject.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);

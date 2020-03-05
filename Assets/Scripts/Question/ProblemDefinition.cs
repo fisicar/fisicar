@@ -11,6 +11,7 @@ public class ProblemDefinition
     
     [Multiline]
     public string longDescription;
+    public string unit;
 
     public Problem problem;
     public Sprite sprite;

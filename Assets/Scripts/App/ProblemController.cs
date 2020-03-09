@@ -9,11 +9,14 @@ public class ProblemController : MonoBehaviour
     public Vector2 minValue = new Vector2(-0.5f, 0);
     public Vector2 maxValue = new Vector2(0.5f, 1);
     public Slider controllerSlider;
-    
+
+    public static event Action<String> OnUnitChange;
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2> OnModelPositionUpdate;
     public static event Action<float> OnSliderValueChange;
     public static event Action<float> OnAnswerValueChange; 
+    public static Func<float> getSliderValue;
+    
     private GameObject _instantiatedEnvironment;
     
     private void Awake()
@@ -21,8 +24,15 @@ public class ProblemController : MonoBehaviour
         controllerSlider.onValueChanged.AddListener(UpdatePosition);
         UIController.OnProblemSelected += OnProblemSelected;
         UIController.OnBackClick += UIControllerOnOnBackClick;
+        UIController.OnPlayClick += UIControllerOnPlayClick;
+        getSliderValue += () => controllerSlider.value;
     }
 
+    private void UIControllerOnPlayClick(float normalizedValue)
+    {
+        controllerSlider.value = normalizedValue;
+    }
+    
     private void UIControllerOnOnBackClick()
     {
         
@@ -61,6 +71,11 @@ public class ProblemController : MonoBehaviour
             _instantiatedEnvironment = Instantiate(currentQuestion.environment, transform);
         }
 
+        if (OnUnitChange != null)
+        {
+            OnUnitChange.Invoke(currentQuestion.unit);
+        }
+
         for (var i = 0; i < currentQuestion.models.Length; i++)
         {
             var model = currentQuestion.models[i];
@@ -84,11 +99,22 @@ public class ProblemController : MonoBehaviour
         var normalizedAnswer = Mathf.InverseLerp(_currentProblem.minValue.x, _currentProblem.maxValue.x,
             _currentProblem.Evaluate(normalizedValue));
         var realX = Mathf.Lerp(minValue.x, maxValue.x, normalizedAnswer);
-        _instantiatedModels[0].transform.localPosition = new Vector3(realX, 0);
+        var realY = 0f;
+        var xValue = _currentProblem.Evaluate(normalizedValue);
+        var yValue = 0f;
+        if (_currentProblem is SimpleOT simpleOt)
+        {
+            var normalizedAnswerY = Mathf.InverseLerp(_currentProblem.minValue.y, _currentProblem.maxValue.y,
+                simpleOt.EvaluateY(normalizedValue));
+            yValue = simpleOt.EvaluateY(normalizedValue);
+            realY = Mathf.Lerp(minValue.y, maxValue.y, normalizedAnswerY);
+        }
+        
+        _instantiatedModels[0].transform.localPosition = new Vector3(realX, realY);
 
         if (OnModelPositionUpdate != null)
         {
-            OnModelPositionUpdate.Invoke(0, new Vector2(_currentProblem.Evaluate(normalizedValue), 0));
+            OnModelPositionUpdate.Invoke(0, new Vector2(xValue, yValue));
         }
         
         if (_currentProblem is DoubleMU doubleProblem && _instantiatedModels.Length > 1)

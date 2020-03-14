@@ -5,16 +5,26 @@ public class ModelUIController : MonoBehaviour
 {
     public TextMeshProUGUI positionText;
     public int index;
-    public bool printParenthesis = true;
-    public bool printX = true;
-    public bool printY = true;
     public int floatPoints = 2;
-    public string _unit;
+    
+    private bool _printParenthesis = true;
+    private bool _printX = true;
+    private bool _printY = true;
+    private string _unit;
 
     private void Awake()
     {
          ProblemController.OnUnitChange += OnUnitChange;
          ProblemController.OnModelPositionUpdate += OnModelPositionUpdate;
+         ProblemController.UpdateModelDetails += OnProblemSelectedUpdateBools;
+    }
+
+    private void OnProblemSelectedUpdateBools(bool arg1, bool arg2, bool arg3, string arg4)
+    {
+        _printParenthesis = arg1;
+        _printX = arg2;
+        _printY = arg3;
+        _unit = arg4;
     }
 
     private void OnUnitChange(string unit)
@@ -30,19 +40,19 @@ public class ModelUIController : MonoBehaviour
         {
             var text = "";
             var format = "F" + floatPoints;
-            if (printParenthesis)
+            if (_printParenthesis)
                 text = "(";
             Debug.Log(_unit);
-            if (printX)
+            if (_printX)
                 text += position.x.ToString(format) + _unit;
-            if (printY)
+            if (_printY)
             {
-                if (printX)
+                if (_printX)
                     text += ", ";
                 text += position.y.ToString(format) + _unit;
             }
 
-            if (printParenthesis)
+            if (_printParenthesis)
                 text += ")";
     	        
             positionText.text = text;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +15,15 @@ public class ProblemController : MonoBehaviour
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2> OnModelPositionUpdate;
     public static event Action<float> OnSliderValueChange;
-    public static event Action<float> OnAnswerValueChange; 
+    public static event Action<float> OnAnswerValueChange;
+
+    public static event Action<bool, bool, bool, string> UpdateModelDetails; 
+    
     public static Func<float> getSliderValue;
     
     private GameObject _instantiatedEnvironment;
+    private bool _a = true;
+    private ProblemDefinition _problemCoroutine;
     
     private void Awake()
     {
@@ -55,6 +61,7 @@ public class ProblemController : MonoBehaviour
 
     private void OnProblemSelected(ProblemDefinition currentQuestion)
     {
+        _problemCoroutine = currentQuestion;
         _currentProblem = (currentQuestion.problem);
         _currentProblem.Process();
         
@@ -87,6 +94,18 @@ public class ProblemController : MonoBehaviour
         }
 
         UpdatePosition(0);
+
+        StartCoroutine(nameof(OnUpdateModelsDetails));
+    }
+
+    private IEnumerator OnUpdateModelsDetails()
+    {
+        while (_a)
+        {
+            _a = false;
+            yield return null;
+        }
+        UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX, _problemCoroutine.printY, _problemCoroutine.unit);
     }
 
     private void UpdatePosition(float normalizedValue)

@@ -238,7 +238,7 @@ public class UIController : MonoBehaviour
 
             case Screen.Instruction:
                 UpdateTitle("Instruções");
-                EnableNextButton("Entendi", () =>
+                EnableNextButton("Prosseguir", () =>
                 {
                     SetupScreen(Screen.Positioning);
                     _instructionClosed = true;

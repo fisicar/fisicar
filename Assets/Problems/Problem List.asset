@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Problem List
   m_EditorClassIdentifier: 
   problems:
-  - isActive: 0
+  - isActive: 1
     title: Movimento Uniforme
     longDescription: "Um carro se move em movimento retil\xEDneo uniforme em dire\xE7\xE3o
       a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual a velocidade do carro

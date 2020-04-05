@@ -12,7 +12,11 @@ public class ProblemDefinition
     [Multiline]
     public string longDescription;
     public string unit;
-
+    
+    public bool printParenthesis = true;
+    public bool printX = true;
+    public bool printY = true;
+    
     public Problem problem;
     public Sprite sprite;
     public GameObject[] models;

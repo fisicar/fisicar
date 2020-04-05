@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,9 +176,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Movimente o celular de um lado para o outro escaneando a seua mesa at\xE9
-    que varias particulas tomem conta da tela e voc\xEA consiga visualizar os objetos.
-    \n\nQuando achar que o plano esta bem posicionado pressione o bot\xE3o \"Posicionar\"."
+  m_text: "Movimente o aparelho suavemente de um lado para o outro sobre uma superf\xEDcie
+    at\xE9 que varios pontos aparecam na sua tela e voc\xEA consiga visualizar os
+    objetos. \n\nAjuste o tamanho utilizando o controle deslizante.\n\nQuando estiver
+    ok, pressione o bot\xE3o \u201CPosicionar\u201D.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 488a31fa0981c604c9909ad0784ef6cf, type: 2}
   m_sharedMaterial: {fileID: 4743006427066934124, guid: 488a31fa0981c604c9909ad0784ef6cf,
@@ -760,6 +761,9 @@ GameObject:
   - component: {fileID: 251630073}
   - component: {fileID: 251630072}
   - component: {fileID: 251630076}
+  - component: {fileID: 251630078}
+  - component: {fileID: 251630077}
+  - component: {fileID: 251630079}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -885,6 +889,97 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   replacementShader: {fileID: 4800000, guid: a3529fb4e6767834a9bd3fde7d778869, type: 3}
+--- !u!114 &251630077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251630070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: faab0ddc694381248a7871571056082e, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &251630078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251630070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 251630075}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 23
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &251630079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251630070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f50608b6a367dc4b9654135d0979381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contrastSlider: {fileID: 1285980212}
+  postProcessVolume: {fileID: 251630077}
 --- !u!1 &270962653
 GameObject:
   m_ObjectHideFlags: 0
@@ -3119,7 +3214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 373, y: 1203, z: 1867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5571,11 +5666,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "FisicAR \xE9 um aplicativo para auxiliar no ensino de mec\xE2nica, da
-    mat\xE9ria de Fisica, para alunos do primeiro ano do ensino m\xE9dio.\n\nA ideia
-    do aplicativo \xE9 auxiliar na compreens\xE3o e visualisa\xE7\xE3o dos problemas,
-    permitindo assim uma maior compreens\xE3o de como resolver cada problema.\n\nEste
-    aplicativo tamb\xE9m conta com recursos de acessibilidade que facilita a sua
-    visualisa\xE7\xE3o por alunos com problemas de vis\xE3o"
+    mat\xE9ria de Fisica, para alunos do ensino m\xE9dio.\n\nA ideia do aplicativo
+    \xE9 auxiliar na compreens\xE3o e visualisa\xE7\xE3o dos problemas, permitindo
+    assim uma maior compreens\xE3o de como resolver cada problema.\n\nEste aplicativo
+    tamb\xE9m conta com recursos de acessibilidade que facilita a sua visualisa\xE7\xE3o
+    por alunos com problemas de vis\xE3o\n\nVoce pode voltar a esta tela a qualquer
+    momento pressionando no bot\xE3o de op\xE7\xF5es > Sobre o aplicativo.\n\n<b>Erros
+    no AR</b>\n\nCaso a visualiza\xE7\xE3o em ralidade aumentada n\xE3o estja funcionando
+    certifique-se que:\n\n1. Este aplicativo tem permiss\xE3o para usar a c\xE2mera.\n2.
+    O seu dispositivo possui o AR Core instalado."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2b5dbfdf96acdcf4cbfd191eb791bb58, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5952,10 +6051,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670551931}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
 --- !u!114 &1670551934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5963,7 +6061,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670551931}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -6525,6 +6623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787290285}
   - component: {fileID: 1787290286}
+  - component: {fileID: 1787290287}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -6571,12 +6670,26 @@ MonoBehaviour:
     m_Bottom: 50
   m_ChildAlignment: 4
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &1787290287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787290284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1828695663
 GameObject:
   m_ObjectHideFlags: 0

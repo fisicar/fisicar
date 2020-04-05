@@ -29,7 +29,6 @@ public class ModelUIController : MonoBehaviour
 
     private void OnUnitChange(string unit)
     {
-        Debug.Log(unit+"b");
         _unit = unit;
     }
 
@@ -42,7 +41,6 @@ public class ModelUIController : MonoBehaviour
             var format = "F" + floatPoints;
             if (_printParenthesis)
                 text = "(";
-            Debug.Log(_unit);
             if (_printX)
                 text += position.x.ToString(format) + _unit;
             if (_printY)

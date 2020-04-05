@@ -37,9 +37,5 @@ public class PostProcessController : MonoBehaviour
         _colorGrading.lift.value = _lift;
         _colorGrading.gamma.value = _gamma;
         _colorGrading.gain.value = _gain;
-        
-        Debug.Log(_lift);
-        Debug.Log(_gamma);
-        Debug.Log(_gain);
     }
 }

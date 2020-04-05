@@ -16,15 +16,15 @@ public class ModelUIController : MonoBehaviour
     {
          ProblemController.OnUnitChange += OnUnitChange;
          ProblemController.OnModelPositionUpdate += OnModelPositionUpdate;
-         ProblemController.UpdateModelDetails += OnProblemSelectedUpdateBools;
+         ProblemController.UpdateModelDetails += OnUpdateModelDetails;
     }
 
-    private void OnProblemSelectedUpdateBools(bool arg1, bool arg2, bool arg3, string arg4)
+    private void OnUpdateModelDetails(bool printParenthesis, bool printX, bool printY, string unit)
     {
-        _printParenthesis = arg1;
-        _printX = arg2;
-        _printY = arg3;
-        _unit = arg4;
+        _printParenthesis = printParenthesis;
+        _printX = printX;
+        _printY = printY;
+        _unit = unit;
     }
 
     private void OnUnitChange(string unit)

@@ -100,11 +100,10 @@ public class ProblemController : MonoBehaviour
 
     private IEnumerator OnUpdateModelsDetails()
     {
-        while (_a)
-        {
-            _a = false;
-            yield return null;
-        }
+        yield return null;
+        yield return null;
+        yield return null;
+        
         UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX, _problemCoroutine.printY, _problemCoroutine.unit);
     }
 

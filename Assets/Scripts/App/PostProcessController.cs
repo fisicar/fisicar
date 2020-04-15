@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PostProcessController : MonoBehaviour
 {
-    public Slider contrastSlider;
+    public Toggle contrastToggle;
     public PostProcessVolume postProcessVolume;
 
     private ColorGrading _colorGrading;
@@ -20,16 +20,18 @@ public class PostProcessController : MonoBehaviour
         
 
         
-        UpdateColorGrading(0);
+        UpdateColorGrading(false);
     }
 
     private void Update()
     {
-        contrastSlider.onValueChanged.AddListener(UpdateColorGrading);
+        contrastToggle.onValueChanged.AddListener(UpdateColorGrading);
     }
 
-    private void UpdateColorGrading(float value)
+    private void UpdateColorGrading(bool boolValue)
     {
+        var value = boolValue ? 1 : 0;
+
         _lift = new Vector4(0, 0, 0, value);  //Lift
         _gamma = new Vector4(0, 0, 0, -value); //Gamma
         _gain = new Vector4(0, 0, 0, value); //Gain

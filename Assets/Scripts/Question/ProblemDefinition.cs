@@ -8,11 +8,11 @@ public class ProblemDefinition
 {
     public bool isActive;
     public string title;
-    
+
     [Multiline]
     public string longDescription;
     public string unit;
-    
+
     public bool printParenthesis = true;
     public bool printX = true;
     public bool printY = true;

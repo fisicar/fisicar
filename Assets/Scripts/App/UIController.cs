@@ -34,7 +34,10 @@ public class UIController : MonoBehaviour
     [Header("???")]
     public Slider scaleSlider;
     public Toggle invertColor;
+    public Toggle showEquation;
     public GameObject instructionArea;
+    public GameObject viewArea;
+    public TextMeshProUGUI equationText;
     public TextMeshProUGUI title;
     public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
@@ -181,6 +184,7 @@ public class UIController : MonoBehaviour
 
     private void SetupScreen(Screen newScreen)
     {
+        viewArea.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
         instructionButton.gameObject.SetActive(false);
@@ -262,8 +266,10 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.ARVisualizer:
-                UpdateTitle("Movimento uniforme");
-
+                UpdateTitle(_currentProblem.title); //Used to just say "Movimento retilíneo", updated to reflect currentProblem title
+                UpdateEquationText(_currentProblem.problem.equation);
+                
+                viewArea.gameObject.SetActive(showEquation.isOn);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 slider.SetActive(true);
@@ -286,6 +292,10 @@ public class UIController : MonoBehaviour
     private void UpdateTitle(string newTitle)
     {
         title.text = newTitle;
+    }
+    private void UpdateEquationText(string newEquation)
+    {
+        equationText.text = newEquation;
     }
 
     private void SetPosition()

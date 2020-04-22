@@ -29,6 +29,9 @@ public class SimpleOT : Problem
         _movementX.finalPosition = _movementX.initialPosition + _movementX.velocity * _movementY.Answer;
         _movementX.Process();
         Answer = _movementY.Answer;
+        equation = "X: " + _movementX.finalPosition + " = " + _movementX.initialPosition + " + " + _movementX.velocity +
+                   "t" + Environment.NewLine + "Y: " + _movementY.finalPosition + " = " + _movementY.initialPosition +
+                   " + " + _movementY.initialVelocity + "t + (" + _movementY.acceleration + "t^2)/2";
         minValue = new Vector2(_movementX.minValue.x, _movementY.minValue.x);
         maxValue = new Vector2(_movementX.maxValue.x, _movementY.maxValue.x);
     }

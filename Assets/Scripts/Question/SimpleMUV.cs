@@ -22,6 +22,8 @@ namespace Question
             var delta = Mathf.Pow(Coefficients[1], 2) - 4 * Coefficients[2] * Coefficients[0];
             if (delta < 0) throw new Exception("Error: delta lower than zero");
             Answer = (-Coefficients[1] + Mathf.Sqrt(delta)) / (2 * Coefficients[2]);
+            equation = finalPosition + " = " + initialPosition + " + " + initialVelocity + "t + (" + acceleration +
+                       "t^2)/2";
             minValue = new Vector2(Mathf.Min(initialPosition, finalPosition), 0);
             maxValue = new Vector2(Mathf.Max(initialPosition, finalPosition), 0);
         }

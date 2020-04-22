@@ -88,6 +88,6 @@ MonoBehaviour:
     problem: {fileID: 11400000, guid: 7995b5514a0a5bb4ab93fb0cc3512666, type: 2}
     sprite: {fileID: 21300000, guid: 012143533d0d6b6499cc9034e928ea57, type: 3}
     models:
-    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
-    environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
+    - {fileID: 2822890441924335189, guid: 600e31e8b7bc6184d9b71f29c8a94c54, type: 3}
+    environment: {fileID: 2759467160346795482, guid: 6a79be7fe44b01e49b9829dc72781673,
       type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   problems:
   - isActive: 1
     title: Movimento Uniforme - Bolinha
-    longDescription: "Uma bola se move em movimento retil\xEDneo uniforme a 2.5 m/s
+    longDescription: "Uma bola se move em movimento retil\xEDneo uniforme a 2,5 m/s
       em dire\xE7\xE3o a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual
       o tempo, em segundos at\xE9 a bola chegar na parede?"
     unit: m
@@ -49,7 +49,7 @@ MonoBehaviour:
     title: "MUV - Acelera\xE7\xE3o"
     longDescription: "Um ve\xEDculo parte do repouso em movimento retil\xEDneo e
       acelera em uma taxa de 2,0 m/s\xB2, em quantos segundos ele alcan\xE7ar\xE1
-      9 metros de dist\xE2ncia do ponto inicial"
+      9 metros de dist\xE2ncia do ponto inicial?"
     unit: m
     printParenthesis: 0
     printX: 1

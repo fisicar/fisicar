@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     public GameObject optionsScreen;
     public Screen currentScreen = Screen.About;
     public Screen previousScreen;
+    public Screen previousScreenOverride;
     public GameObject panel;
     public GameObject footer;
     public GameObject contentArea;
@@ -82,7 +83,7 @@ public class UIController : MonoBehaviour
         repositionButton.onClick.AddListener(RepositioningPlane);
         instructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
-        settingButton.onClick.AddListener(() => SetupScreen(Screen.Settings));
+        settingButton.onClick.AddListener(SettingsButtonClick);
         playButton.onClick.AddListener(OnPlay);
         
         invertColor.onValueChanged.AddListener((invertState => invertShaderScript.enabled = invertState));
@@ -92,6 +93,12 @@ public class UIController : MonoBehaviour
 
         ProblemController.OnAnswerValueChange += f => _answer = f;
         ProblemController.OnSliderValueChange += f => sliderText.text = (f * _answer).ToString("F1") + " s";
+    }
+
+    private void SettingsButtonClick()
+    {
+        SetupScreen(Screen.Settings);
+        previousScreenOverride = previousScreen;
     }
 
     private IEnumerator PlayScene()
@@ -157,6 +164,10 @@ public class UIController : MonoBehaviour
     {
         switch (currentScreen)
         {
+            case Screen.About:
+                SetupScreen(Screen.Settings);
+                previousScreen = previousScreenOverride;
+                break;
             case Screen.Explanation:
                 SetupScreen(Screen.ContentList);
                 OnBackClick?.Invoke();
@@ -207,9 +218,16 @@ public class UIController : MonoBehaviour
         switch (newScreen)
         {
             case Screen.About:
-                EnableNextButton("Continuar", () => SetupScreen(Screen.ContentList));
+                if (previousScreen == Screen.About)
+                {
+                    EnableNextButton("Continuar", () => SetupScreen(Screen.ContentList));
+                }
+                else
+                {
+                    
+                    backButton.gameObject.SetActive(true);
+                }
 
-                settingButton.gameObject.SetActive(true);
                 screens[0].gameObject.SetActive(true);
                 break;
 
@@ -266,7 +284,7 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.ARVisualizer:
-                UpdateTitle(_currentProblem.title); //Used to just say "Movimento retilíneo", updated to reflect currentProblem title
+                UpdateTitle(_currentProblem.title);
                 UpdateEquationText(_currentProblem.problem.equation);
                 
                 viewArea.gameObject.SetActive(showEquation.isOn);
@@ -277,6 +295,7 @@ public class UIController : MonoBehaviour
 
             case Screen.Settings:
                 UpdateTitle("Configurações");
+                EnableNextButton("Sobre", () => SetupScreen(Screen.About));
 
                 optionsScreen.SetActive(true);
                 backButton.gameObject.SetActive(true);

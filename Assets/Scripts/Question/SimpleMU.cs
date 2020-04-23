@@ -18,7 +18,6 @@ public class SimpleMU : Problem
         Answer = (finalPosition - initialPosition) / velocity;
         Coefficients[1] = velocity;
         equation = "S = S<sub>o</sub> + Vt" + Environment.NewLine + finalPosition + " = " + initialPosition + " + " + velocity + "t";
-        Debug.Log("ads");
         minValue = new Vector2(Mathf.Min(Evaluate(0), Evaluate(1)), 0);
         maxValue = new Vector2(Mathf.Max(Evaluate(0), Evaluate(1)), 0);
     }

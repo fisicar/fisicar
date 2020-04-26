@@ -27,6 +27,11 @@ public class SimpleMU : Problem
         var time = normalizedValue * Answer;
         return initialPosition + velocity * time;
     }
+
+    public override float Velocity(float normalizedValue)
+    {
+        return velocity;
+    }
 }
 
 /* seltz was here*/

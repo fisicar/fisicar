@@ -22,4 +22,10 @@ public class Problem : ScriptableObject
     {
         return float.NaN;
     }
+
+    public virtual float Velocity(float normalizedValue)
+    {
+        return float.NaN;
+    }
+    
 }

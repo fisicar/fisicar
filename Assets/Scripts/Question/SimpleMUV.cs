@@ -38,6 +38,11 @@ namespace Question
         {
             return initialPosition + initialVelocity * time + acceleration * time * time / 2;
         }
+
+        public override float Velocity(float normalizedValue)
+        {
+            return initialVelocity + (acceleration*(normalizedValue * Answer));
+        }
     }
 }
 // Certo móvel, inicialmente na velocidade de 3 m/s, acelera constantemente a 2 m/s2 até se distanciar 4 m de sua posição inicial. O intervalo de tempo decorrido até o término desse deslocamento foi de:

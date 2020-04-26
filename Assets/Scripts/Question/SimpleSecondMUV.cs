@@ -24,5 +24,10 @@ namespace Question
             minValue = new Vector2(Mathf.Min(initialPosition, finalPosition, Function(halfTime)), 0);
             maxValue = new Vector2(Mathf.Max(initialPosition, finalPosition, Function(halfTime)), 0);
         }
+
+        public override float Velocity(float normalizedValue)
+        {
+            return initialVelocity + (acceleration * (Answer * normalizedValue));
+        }
     }
 }

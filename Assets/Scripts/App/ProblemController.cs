@@ -13,7 +13,7 @@ public class ProblemController : MonoBehaviour
 
     public static event Action<String> OnUnitChange;
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
-    public static event Action<int, Vector2> OnModelPositionUpdate;
+    public static event Action<int, Vector2, Vector2> OnModelPositionUpdate;
     public static event Action<float> OnSliderValueChange;
     public static event Action<float> OnAnswerValueChange;
 
@@ -119,7 +119,9 @@ public class ProblemController : MonoBehaviour
         var realX = Mathf.Lerp(minValue.x, maxValue.x, normalizedAnswer);
         var realY = 0f;
         var xValue = _currentProblem.Evaluate(normalizedValue);
+        var xVelocity = _currentProblem.Velocity(normalizedValue);
         var yValue = 0f;
+        var yVelocity = 0f;
         if (_currentProblem is SimpleOT simpleOt)
         {
             var normalizedAnswerY = Mathf.InverseLerp(_currentProblem.minValue.y, _currentProblem.maxValue.y,
@@ -132,7 +134,7 @@ public class ProblemController : MonoBehaviour
 
         if (OnModelPositionUpdate != null)
         {
-            OnModelPositionUpdate.Invoke(0, new Vector2(xValue, yValue));
+            OnModelPositionUpdate.Invoke(0, new Vector2(xValue, yValue), new Vector2(xVelocity,yVelocity));
         }
         
         if (_currentProblem is DoubleMU doubleProblem && _instantiatedModels.Length > 1)
@@ -144,7 +146,8 @@ public class ProblemController : MonoBehaviour
             
             if (OnModelPositionUpdate != null)
             {
-                OnModelPositionUpdate.Invoke(1, new Vector2(doubleProblem.EvaluateB(normalizedValue), 0));
+                OnModelPositionUpdate.Invoke(1, new Vector2(doubleProblem.EvaluateB(normalizedValue), 0), 
+                    new Vector2(doubleProblem.VelocityB(normalizedValue),0));
             }
         }
     }

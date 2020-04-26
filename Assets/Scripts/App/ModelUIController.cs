@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class ModelUIController : MonoBehaviour
@@ -33,14 +34,27 @@ public class ModelUIController : MonoBehaviour
     }
 
 
-    private void OnModelPositionUpdate(int index, Vector2 position)
+    private void OnModelPositionUpdate(int index, Vector2 position, Vector2 velocity)
     {
         if (this.index == index)
         {
             var text = "";
             var format = "F" + floatPoints;
+            
+            
+            if (_printX)
+                text += "Vx = "+ velocity.x.ToString(format) + Environment.NewLine;
+            if (_printY)
+            {
+                if (_printX)
+                    text += ", ";
+                text += "Vy = "+ velocity.y.ToString(format) + Environment.NewLine;
+            }
+
+            
+            
             if (_printParenthesis)
-                text = "(";
+                text += "(";
             if (_printX)
                 text += position.x.ToString(format) + _unit;
             if (_printY)

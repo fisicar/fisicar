@@ -39,9 +39,19 @@ public class SimpleOT : Problem
     {
         return _movementX.Evaluate(normalizedValue);
     }
-    
+
+    public override float Velocity(float normalizedValue)
+    {
+        return _movementX.Velocity(normalizedValue);
+    }
+
     public float EvaluateY(float normalizedValue)
     {
         return _movementY.Evaluate(normalizedValue);
+    }
+
+    public float VelocityY(float normalizedValue)
+    {
+        return _movementY.Velocity(normalizedValue);
     }
 }

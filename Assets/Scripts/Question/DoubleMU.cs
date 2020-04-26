@@ -30,10 +30,20 @@ public class DoubleMU : SimpleMU
         return initialPosition + velocity * time;
     }
 
+    public override float Velocity(float normalizedValue)
+    {
+        return velocity;
+    }
+
     public float EvaluateB(float normalizedValueB)
     {
         var time = normalizedValueB * Answer;
         return initialPositionB + velocityB * time;
+    }
+
+    public float VelocityB(float normalizedValueB)
+    {
+        return velocityB;
     }
 }
 

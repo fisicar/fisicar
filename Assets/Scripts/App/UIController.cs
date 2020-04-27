@@ -19,7 +19,8 @@ public class UIController : MonoBehaviour
     public Screen previousScreenOverride;
     public GameObject panel;
     public GameObject footer;
-    public GameObject contentArea;
+    public GameObject scrollViewContainer;
+    public GameObject ARContainer;
 
     [Header("Buttons")]
     public Button nextButton;
@@ -174,12 +175,12 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.Positioning:
-                contentArea.SetActive(false);
+                scrollViewContainer.SetActive(false);
                 SetupScreen(Screen.Explanation);
                 break;
 
             case Screen.ARVisualizer:
-                contentArea.SetActive(false);
+                scrollViewContainer.SetActive(false);
                 slider.SetActive(false);
                 SetupScreen(Screen.Explanation);
                 break;
@@ -201,9 +202,10 @@ public class UIController : MonoBehaviour
         instructionButton.gameObject.SetActive(false);
         instructionArea.gameObject.SetActive(false);
         settingButton.gameObject.SetActive(false);
-        contentArea.SetActive(true);
+        scrollViewContainer.SetActive(true);
         footer.SetActive(true);
         scaleSlider.gameObject.SetActive(false);
+        ARContainer.SetActive(false);
 
         foreach (var t in screens)
         {
@@ -265,7 +267,8 @@ public class UIController : MonoBehaviour
                     SetupScreen(Screen.Positioning);
                     _instructionClosed = true;
                 });
-
+                ARContainer.SetActive(true);
+                scrollViewContainer.SetActive(false);
                 settingButton.gameObject.SetActive(true);
                 instructionArea.gameObject.SetActive(true);
                 break;
@@ -279,7 +282,8 @@ public class UIController : MonoBehaviour
                 instructionButton.gameObject.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
-                contentArea.SetActive(false);
+                ARContainer.SetActive(true);
+                scrollViewContainer.SetActive(false);
                 slider.SetActive(false);
                 break;
 
@@ -287,6 +291,8 @@ public class UIController : MonoBehaviour
                 UpdateTitle(_currentProblem.title);
                 UpdateEquationText(_currentProblem.problem.equation);
                 
+                ARContainer.SetActive(true);
+                scrollViewContainer.SetActive(false);
                 viewArea.gameObject.SetActive(showEquation.isOn);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);

@@ -1941,7 +1941,6 @@ MonoBehaviour:
   controllerSlider: {fileID: 1553178883512032293}
   sliderText: {fileID: 1553178883278767627}
   sliderArea: {fileID: 1553178883360446940}
-  invertShaderScript: {fileID: 0}
   playSprites:
   - {fileID: 21300000, guid: 3108e8cf75d7a9c44af64e05b9b3c40a, type: 3}
   - {fileID: 21300000, guid: d79b6e960b359624899456b0ca3a5cf1, type: 3}
@@ -2392,6 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contrastToggle: {fileID: 7003844700136448213}
+  invertColorToggle: {fileID: 1513433513000185939}
   postProcessVolume: {fileID: 7552263795502085508}
 --- !u!1001 &4228679766577650096
 PrefabInstance:
@@ -2400,6 +2400,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1553178884858254237}
     m_Modifications:
+    - target: {fileID: 3396477319699543070, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477319699543070, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477319699543070, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477319699543070, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3396477319823914728, guid: 86999d1a65479944da69e6ba47ec42ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2515,6 +2535,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3396477320509849518, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477320509849518, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477320776066311, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477320776066311, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477320776066311, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396477320776066311, guid: 86999d1a65479944da69e6ba47ec42ae,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3396477321160259675, guid: 86999d1a65479944da69e6ba47ec42ae,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2594,6 +2644,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1553178884858254237}
     m_Modifications:
+    - target: {fileID: 1102140041829170272, guid: 39ec4415e6cca8e46978d8fe6bb14daf,
+        type: 3}
+      propertyPath: m_Name
+      value: ContrasLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897418379730136294, guid: 39ec4415e6cca8e46978d8fe6bb14daf,
+        type: 3}
+      propertyPath: m_Name
+      value: InvertColorLine
+      objectReference: {fileID: 0}
     - target: {fileID: 9151377800351482756, guid: 39ec4415e6cca8e46978d8fe6bb14daf,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2738,6 +2798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191017439072896303, guid: 39ec4415e6cca8e46978d8fe6bb14daf,
+        type: 3}
+      propertyPath: m_text
+      value: Inverter Cores
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39ec4415e6cca8e46978d8fe6bb14daf, type: 3}

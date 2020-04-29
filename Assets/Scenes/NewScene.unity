@@ -351,7 +351,6 @@ GameObject:
   - component: {fileID: 251630074}
   - component: {fileID: 251630073}
   - component: {fileID: 251630072}
-  - component: {fileID: 251630076}
   - component: {fileID: 251630078}
   m_Layer: 0
   m_Name: AR Camera
@@ -465,19 +464,6 @@ Transform:
   m_Father: {fileID: 1643833245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &251630076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251630070}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618d65484b3082545a4708bf24ada44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replacementShader: {fileID: 4800000, guid: a3529fb4e6767834a9bd3fde7d778869, type: 3}
 --- !u!114 &251630078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,26 +1147,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1553178884719021331, guid: 8cf487cb21d7c1e4f9ad94837487b8da,
+    - target: {fileID: 1553178884726226928, guid: 8cf487cb21d7c1e4f9ad94837487b8da,
         type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553178884719021331, guid: 8cf487cb21d7c1e4f9ad94837487b8da,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553178884719021331, guid: 8cf487cb21d7c1e4f9ad94837487b8da,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553178884719021331, guid: 8cf487cb21d7c1e4f9ad94837487b8da,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 251630071}
     - target: {fileID: 1553178884726226931, guid: 8cf487cb21d7c1e4f9ad94837487b8da,
         type: 3}
       propertyPath: m_LocalPosition.x

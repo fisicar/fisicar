@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics.SymbolStore;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class PostProcessController : MonoBehaviour
 {
     public Toggle contrastToggle;
+    public Toggle invertColorToggle;
     public PostProcessVolume postProcessVolume;
 
     private ColorGrading _colorGrading;
@@ -14,30 +16,27 @@ public class PostProcessController : MonoBehaviour
     private Vector4 _gamma;
     private Vector4 _gain;
 
-    private void Start()
+    private void Awake()
     {
         postProcessVolume.profile.TryGetSettings(out _colorGrading);
         
+        contrastToggle.onValueChanged.AddListener(UpdateColorContrast);
+        invertColorToggle.onValueChanged.AddListener(UpdateColorInvert);
 
-        
-        UpdateColorGrading(false);
+        UpdateColorContrast(false);
     }
 
-    private void Update()
+    private void UpdateColorInvert(bool arg0)
     {
-        contrastToggle.onValueChanged.AddListener(UpdateColorGrading);
+        _colorGrading.hueShift.value = arg0 ? 180 : 0;
     }
 
-    private void UpdateColorGrading(bool boolValue)
+    private void UpdateColorContrast(bool boolValue)
     {
         var value = boolValue ? 1 : 0;
 
-        _lift = new Vector4(0, 0, 0, value);  //Lift
-        _gamma = new Vector4(0, 0, 0, -value); //Gamma
-        _gain = new Vector4(0, 0, 0, value); //Gain
-
-        _colorGrading.lift.value = _lift;
-        _colorGrading.gamma.value = _gamma;
-        _colorGrading.gain.value = _gain;
+        _colorGrading.lift.value = new Vector4(0, 0, 0, value);
+        _colorGrading.gamma.value = new Vector4(0, 0, 0, -value);
+        _colorGrading.gain.value = new Vector4(0, 0, 0, value);
     }
 }

@@ -19,7 +19,6 @@ public class ProblemController : MonoBehaviour
     public static event Action<bool, bool, bool, string> UpdateModelDetails;
 
     private GameObject _instantiatedEnvironment;
-    private bool _a = true;
     private ProblemDefinition _problemCoroutine;
     
     private void Awake()

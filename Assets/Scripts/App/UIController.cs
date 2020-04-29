@@ -45,7 +45,6 @@ public class UIController : MonoBehaviour
     public Slider controllerSlider;
     public TextMeshProUGUI sliderText;
     public GameObject sliderArea;
-    public ReplacementShaderEffect invertShaderScript;
     public Sprite[] playSprites;
     public Image playImage;
 
@@ -85,8 +84,6 @@ public class UIController : MonoBehaviour
         backButton.onClick.AddListener(BackButtonClick);
         settingButton.onClick.AddListener(SettingsButtonClick);
         playButton.onClick.AddListener(OnPlay);
-        
-        invertColor.onValueChanged.AddListener((invertState => invertShaderScript.enabled = invertState));
 
         scaleSlider.onValueChanged.AddListener(arg0 => OnScaleSlideValueChange?.Invoke(arg0));
         scaleSlider.value = initialValue;

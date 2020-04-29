@@ -9,36 +9,26 @@ public class ProblemController : MonoBehaviour
     private GameObject[] _instantiatedModels;
     public Vector2 minValue = new Vector2(-0.5f, 0);
     public Vector2 maxValue = new Vector2(0.5f, 1);
-    public Slider controllerSlider;
 
     public static event Action<String> OnUnitChange;
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2, Vector2> OnModelPositionUpdate;
-    public static event Action<float> OnSliderValueChange;
     public static event Action<float> OnAnswerValueChange;
+    public static event Action<float> OnUpdateControllerSliderValue;
 
-    public static event Action<bool, bool, bool, string> UpdateModelDetails; 
-    
-    public static Func<float> getSliderValue;
-    
+    public static event Action<bool, bool, bool, string> UpdateModelDetails;
+
     private GameObject _instantiatedEnvironment;
     private bool _a = true;
     private ProblemDefinition _problemCoroutine;
     
     private void Awake()
     {
-        controllerSlider.onValueChanged.AddListener(UpdatePosition);
         UIController.OnProblemSelected += OnProblemSelected;
         UIController.OnBackClick += UIControllerOnOnBackClick;
-        UIController.OnPlayClick += UIControllerOnPlayClick;
-        getSliderValue += () => controllerSlider.value;
+        UIController.OnControllerSliderValueChange += UpdatePosition;
     }
 
-    private void UIControllerOnPlayClick(float normalizedValue)
-    {
-        controllerSlider.value = normalizedValue;
-    }
-    
     private void UIControllerOnOnBackClick()
     {
         
@@ -56,7 +46,7 @@ public class ProblemController : MonoBehaviour
         }
 
         _instantiatedModels = null;
-        controllerSlider.value = 0;
+        OnUpdateControllerSliderValue?.Invoke(0);
     }
 
     private void OnProblemSelected(ProblemDefinition currentQuestion)
@@ -109,8 +99,6 @@ public class ProblemController : MonoBehaviour
 
     private void UpdatePosition(float normalizedValue)
     {
-        OnSliderValueChange?.Invoke(normalizedValue);
-
         if (_instantiatedModels == null || _instantiatedModels.Length <= 0)
             return;
 

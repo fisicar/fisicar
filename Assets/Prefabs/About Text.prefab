@@ -1,0 +1,357 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2018507610089210540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018507610089210529}
+  - component: {fileID: 2018507610089210530}
+  - component: {fileID: 2018507610089210531}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [TextMeshPro/Sprite]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2018507610089210529
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507610089210540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2018507611275734340}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2018507610089210530
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507610089210540}
+  m_CullTransparentMesh: 0
+--- !u!114 &2018507610089210531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507610089210540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 6794922291943352532, guid: c149da3805e42411f88297095c0c6b72,
+    type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 2b5dbfdf96acdcf4cbfd191eb791bb58, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: c149da3805e42411f88297095c0c6b72, type: 2}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 6794922291943352532, guid: c149da3805e42411f88297095c0c6b72,
+    type: 2}
+  m_isDefaultMaterial: 1
+  m_padding: 0
+  m_canvasRenderer: {fileID: 2018507610089210530}
+  m_TextComponent: {fileID: 2018507611275734363}
+  m_materialReferenceIndex: 1
+--- !u!1 &2018507611275734341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018507611275734340}
+  - component: {fileID: 2018507611275734362}
+  - component: {fileID: 2018507611275734363}
+  m_Layer: 5
+  m_Name: About Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2018507611275734340
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507611275734341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2018507610089210529}
+  - {fileID: 2018507611637844961}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2018507611275734362
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507611275734341}
+  m_CullTransparentMesh: 0
+--- !u!114 &2018507611275734363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507611275734341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "FisicAR \xE9 um aplicativo para auxiliar no ensino de mec\xE2nica, da
+    mat\xE9ria de Fisica, para alunos do ensino m\xE9dio.\n\nA proposta do aplicativo
+    \xE9 auxiliar na compreens\xE3o e visualiza\xE7\xE3o dos problemas, permitindo
+    assim uma maior entendimento de como resolver cada problema.\n\n<b>Como Utilizar
+    este Aplicativo</b>\n\nPara usar este aplicativo \xE9 necess\xE1rio estar em
+    um ambiente com boa ilumina\xE7\xE3o a fim de que o celular possa identificar
+    uma superf\xEDcie plana onde ser\xE1 apresentada a quest\xE3o selecionada. Recomenda-se
+    a superf\xEDcie de uma mesa ou o ch\xE3o. \n\nCaso voc\xEA n\xE3o veja os objetos
+    da quest\xE3o no momento em que a imagem da c\xE2mera estiver aberta fa\xE7a
+    movimentos leves com o seu dispositivo de um lado para o outro e de cima para
+    baixo, sempre mantendo o foco na superf\xEDcie desejada. Caso voc\xEA tenha problemas,
+    siga para a se\xE7\xE3o <b>Erros e Problemas</b>.\n\nVoc\xEA tamb\xE9m pode ajustar
+    o tamanho dos objetos durante o posicionamento do plano. Veja como reajustar
+    o plano adiante.\n\n<b>Controle da Quest\xE3o</b>\n\nVoc\xEA pode analisar cada
+    quest\xE3o lentamente ao movimentar a barra de progresso na parte inferior da
+    tela. Alternativamente, voc\xEA pode observar a evolu\xE7\xE3o deste de forma
+    linear ao clicar no bot\xE3o de reproduzir <sprite=\"PlayButtonIcon\" index=0>,
+    do lado esquerdo da barra.\n\nDo lado direito voc\xEA visualiza o tempo do problema
+    de acordo o progresso selecionado na barra.\n\n<size=130%><b>Op\xE7\xF5es e Ajuda</b></size>\n\nVoc\xEA
+    pode acessar o menu de op\xE7\xF5es pressionando no bot\xE3o de op\xE7\xF5es
+    <sprite=\"Menu\" index=0> no canto superior direito.\n\nVoc\xEA pode retornar
+    a esta tela de instru\xE7\xF5es ao clicar no bot\xE3o  \"Sobre\" na parte inferior
+    do menu de op\xE7\xF5es.\n\n<b>Acessibilidade</b>\n\nEste aplicativo conta com
+    recursos de acessibilidade que facilita a sua visualiza\xE7\xE3o por alunos com
+    problemas de daltonismo. Estes recursos encontram-se dentro do menu de op\xE7\xF5es.\n\n<b>Reajuste
+    do Plano de Realidade Aumentada</b>\n\nVoc\xEA pode reposicionar o seus objetos
+    da quest\xE3o, bem como o zoom, acessando o menu de op\xE7\xF5es <sprite=\"Menu\"
+    index=0> e clicando no bot\xE3o \"Reposicionar Plano\"\n\n<size=130%><b>Erros
+    e Problemas</b></size>\n\nCaso a visualiza\xE7\xE3o em realidade aumentada n\xE3o
+    estja funcionando certifique-se que:\n\n1. Este aplicativo tem permiss\xE3o para
+    usar a c\xE2mera.\n2. O seu dispositivo possui o AR Core instalado (para dispositivos
+    Android).\n\n<b>Superf\xEDcies N\xE3o Indicadas</b>\n\nSuperf\xEDcies muito uniformes,
+    lisas, sem detalhes ou mudan\xE7as de cores, reflexivas ou transparentes, podem
+    n\xE3o ser ideias para o uso. Caso este seja o seu caso, recomendamos tentar
+    um posicionamento no ch\xE3o.\n\n<b>Outros Problemas</b>\n\nCaso voc\xEA tenha
+    algum outro problema, entre em contato atrav\xE9s do email: fisicar.team@gmail.com\n\n<size=130%><b>Maratona
+    UNICEF Samsung</b></size>\n\nEste aplicativo foi desenvolvido com o apoio da
+    entidades UNICEF e Samsung atrav\xE9s do Edital \"Maratona Unicef Samsung - Tecnologias
+    Mo\u0301veis nas Escolas\".\n\n<b>BNCC</b>\nEste aplicativo orienta-se pela Base
+    Nacional Comum Curricular (BNCC) nas \xE1reas de:\n\u2013 Matem\xE1tica e suas
+    Tecnologias\n\u2013 Ci\xEAncias da Natureza e suas Tecnologias\n\n<b>ODS</b>\nEste
+    aplicativo envolve tamb\xE9m os Objetivos de desenvolvimento Sustent\xE1vel (ODS):\n\u2013
+    4. Educa\xE7\xE3o de Qualidade\n\u2013 11. Cidades e Comunidades Sustent\xE1veis\n\n\n<align=\"center\">\n<size=130%><b>FisicAR
+    Team</b></size>\n\n<b>Equipe de Desenvolvimento</b>\nLucas Lima\nSelthon Moura\nVinicius
+    Honda\nVinicius Tanaka\n\n<b>Orienta\xE7\xE3o e Condu\xE7\xE3o T\xE9cnica</b>\nJuscelino
+    Tanaka\n\n<b>Orienta\xE7\xE3o Pedag\xF3gica</b>\nReginaldo Paix\xE3o\n\n<b>Mentoria
+    T\xE9cnica</b>\nPaulo de Tarso\n\n<b>Mentoria Pedag\xF3gica</b>\nAnt\xF4nio Ferro\n</align>\n\n<b>Open
+    Source License</b>\n\nUnity \xE9 uma marca registrada da Unity Technologies.\nOs
+    modelos 3Ds est\xE3o sob a licen\xE7a de uso gr\xE1tis (free) da Unity Asset
+    Store, onde foram baixados da mesma."
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 2b5dbfdf96acdcf4cbfd191eb791bb58, type: 2}
+  m_sharedMaterial: {fileID: -5602636975398433745, guid: 2b5dbfdf96acdcf4cbfd191eb791bb58,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 40
+  m_fontSizeBase: 40
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 257
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 2018507611275734363}
+    characterCount: 3426
+    spriteCount: 0
+    spaceCount: 571
+    wordCount: 530
+    linkCount: 0
+    lineCount: 159
+    pageCount: 1
+    materialCount: 3
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 1
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 2018507610089210531}
+  - {fileID: 2018507611637844960}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2018507611637844962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018507611637844961}
+  - component: {fileID: 2018507611637844967}
+  - component: {fileID: 2018507611637844960}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [TextMeshPro/Sprite]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2018507611637844961
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507611637844962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2018507611275734340}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2018507611637844967
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507611637844962}
+  m_CullTransparentMesh: 0
+--- !u!114 &2018507611637844960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018507611637844962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 4604740524863176362, guid: 263a3929e404a4f359cf0f0b9c6a42f3,
+    type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 2b5dbfdf96acdcf4cbfd191eb791bb58, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 263a3929e404a4f359cf0f0b9c6a42f3, type: 2}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 4604740524863176362, guid: 263a3929e404a4f359cf0f0b9c6a42f3,
+    type: 2}
+  m_isDefaultMaterial: 1
+  m_padding: 0
+  m_canvasRenderer: {fileID: 2018507611637844967}
+  m_TextComponent: {fileID: 2018507611275734363}
+  m_materialReferenceIndex: 2

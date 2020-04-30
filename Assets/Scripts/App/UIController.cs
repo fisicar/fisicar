@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public float playTime = 3;
-    public float minRealSize = 0.2f;
-    public float maxRealSize = 0.3f;
     [Range(0, 1)] public float initialValue = 0.5f;
 
     [Header("Screens")]
@@ -19,7 +17,8 @@ public class UIController : MonoBehaviour
     public Screen previousScreenOverride;
     public GameObject panel;
     public GameObject footer;
-    public GameObject contentArea;
+    public GameObject scrollViewContainer;
+    public GameObject ARContainer;
 
     [Header("Buttons")]
     public Button nextButton;
@@ -43,10 +42,9 @@ public class UIController : MonoBehaviour
     public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
+    public Slider controllerSlider;
     public TextMeshProUGUI sliderText;
-    public GameObject slider;
-    public ReplacementShaderEffect invertShaderScript;
-    public Transform placement;
+    public GameObject sliderArea;
     public Sprite[] playSprites;
     public Image playImage;
 
@@ -64,7 +62,8 @@ public class UIController : MonoBehaviour
     public static event Action<ProblemDefinition> OnProblemSelected;
     public static event Action OnBackClick;
     public static event Action<bool> IsPositioning;
-    public static event Action<float> OnPlayClick;
+    public static event Action<float> OnScaleSlideValueChange;
+    public static event Action<float> OnControllerSliderValueChange;
 
     private ProblemDefinition _currentProblem;
     private bool _isPlacementPositioned;
@@ -85,14 +84,20 @@ public class UIController : MonoBehaviour
         backButton.onClick.AddListener(BackButtonClick);
         settingButton.onClick.AddListener(SettingsButtonClick);
         playButton.onClick.AddListener(OnPlay);
-        
-        invertColor.onValueChanged.AddListener((invertState => invertShaderScript.enabled = invertState));
-        scaleSlider.onValueChanged.AddListener(ScalingPlacement);
 
+        scaleSlider.onValueChanged.AddListener(arg0 => OnScaleSlideValueChange?.Invoke(arg0));
         scaleSlider.value = initialValue;
 
+        controllerSlider.onValueChanged.AddListener(UpdateSliderText);
+        controllerSlider.onValueChanged.AddListener((arg0 => OnControllerSliderValueChange?.Invoke(arg0)));
+
         ProblemController.OnAnswerValueChange += f => _answer = f;
-        ProblemController.OnSliderValueChange += f => sliderText.text = (f * _answer).ToString("F1") + " s";
+        ProblemController.OnUpdateControllerSliderValue += f => controllerSlider.value = f;
+    }
+
+    private void UpdateSliderText(float arg0)
+    {
+        sliderText.text = (arg0 * _answer).ToString("F1") + " s";
     }
 
     private void SettingsButtonClick()
@@ -103,8 +108,8 @@ public class UIController : MonoBehaviour
 
     private IEnumerator PlayScene()
     {
-        var lerp = ProblemController.getSliderValue.Invoke();
-
+        var lerp = controllerSlider.value;
+        
         if (Math.Abs(lerp - 1) < 0.01)
         {
             lerp = 0;
@@ -113,7 +118,7 @@ public class UIController : MonoBehaviour
         do
         {
             lerp += Time.deltaTime / playTime;
-            OnPlayClick?.Invoke(lerp);
+            controllerSlider.value = lerp;
             yield return null;
             
         } while (lerp < 1);
@@ -140,12 +145,6 @@ public class UIController : MonoBehaviour
     private void UpdatePlaySprite(int i)
     {
         playImage.sprite = playSprites[i];
-    }
-    
-    private void ScalingPlacement(float normalizedValue)
-    {
-        var finalScale = Mathf.Lerp(minRealSize, maxRealSize, normalizedValue);
-        placement.localScale = Vector3.one * finalScale;
     }
 
     private void OpenInstruction()
@@ -174,13 +173,13 @@ public class UIController : MonoBehaviour
                 break;
 
             case Screen.Positioning:
-                contentArea.SetActive(false);
+                scrollViewContainer.SetActive(false);
                 SetupScreen(Screen.Explanation);
                 break;
 
             case Screen.ARVisualizer:
-                contentArea.SetActive(false);
-                slider.SetActive(false);
+                scrollViewContainer.SetActive(false);
+                sliderArea.SetActive(false);
                 SetupScreen(Screen.Explanation);
                 break;
 
@@ -201,9 +200,10 @@ public class UIController : MonoBehaviour
         instructionButton.gameObject.SetActive(false);
         instructionArea.gameObject.SetActive(false);
         settingButton.gameObject.SetActive(false);
-        contentArea.SetActive(true);
+        scrollViewContainer.SetActive(true);
         footer.SetActive(true);
         scaleSlider.gameObject.SetActive(false);
+        ARContainer.SetActive(false);
 
         foreach (var t in screens)
         {
@@ -265,7 +265,8 @@ public class UIController : MonoBehaviour
                     SetupScreen(Screen.Positioning);
                     _instructionClosed = true;
                 });
-
+                ARContainer.SetActive(true);
+                scrollViewContainer.SetActive(false);
                 settingButton.gameObject.SetActive(true);
                 instructionArea.gameObject.SetActive(true);
                 break;
@@ -279,18 +280,21 @@ public class UIController : MonoBehaviour
                 instructionButton.gameObject.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
-                contentArea.SetActive(false);
-                slider.SetActive(false);
+                ARContainer.SetActive(true);
+                scrollViewContainer.SetActive(false);
+                sliderArea.SetActive(false);
                 break;
 
             case Screen.ARVisualizer:
                 UpdateTitle(_currentProblem.title);
                 UpdateEquationText(_currentProblem.problem.equation);
                 
+                ARContainer.SetActive(true);
+                scrollViewContainer.SetActive(false);
                 viewArea.gameObject.SetActive(showEquation.isOn);
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
-                slider.SetActive(true);
+                sliderArea.SetActive(true);
                 break;
 
             case Screen.Settings:
@@ -300,7 +304,7 @@ public class UIController : MonoBehaviour
                 optionsScreen.SetActive(true);
                 backButton.gameObject.SetActive(true);
                 ARArea.SetActive(previousScreen == Screen.ARVisualizer); // Can be improved
-                slider.SetActive(false);
+                sliderArea.SetActive(false);
                 break;
 
             default:

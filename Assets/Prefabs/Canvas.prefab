@@ -1935,7 +1935,7 @@ MonoBehaviour:
   equationText: {fileID: 1553178884679382325}
   title: {fileID: 1553178884719021331}
   ARArea: {fileID: 1553178884254459836}
-  contentExplanation: {fileID: 6346748551002493942}
+  contentExplanation: {fileID: 5945693703492690132}
   contentQuestionsList: {fileID: 11400000, guid: 2322e1eba3bc0b14c8d854a2a17dac13,
     type: 2}
   controllerSlider: {fileID: 1553178883512032293}
@@ -2854,13 +2854,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6346748551002493942 stripped
+--- !u!114 &5945693703492690132 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3646200764432164568, guid: 39ec4415e6cca8e46978d8fe6bb14daf,
+  m_CorrespondingSourceObject: {fileID: 4039340201568589306, guid: 39ec4415e6cca8e46978d8fe6bb14daf,
     type: 3}
   m_PrefabInstance: {fileID: 7678011093515908398}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346748551002493928}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}

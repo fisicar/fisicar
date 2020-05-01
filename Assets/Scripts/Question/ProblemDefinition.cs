@@ -6,9 +6,8 @@ using UnityEngine;
 [Serializable]
 public class ProblemDefinition
 {
-    public bool isActive;
     public string title;
-
+    public bool isActive;
     [Multiline]
     public string longDescription;
     public string unit;

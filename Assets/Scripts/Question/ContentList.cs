@@ -15,6 +15,10 @@ public class ContentList : ScriptableObject
 public class TopicDefinition
 {
     public string topicTitle;
+
+    public Sprite topicSprite;
+
+    [Multiline] public string topicDescription;
     
     public ProblemDefinition[] problems;
 }

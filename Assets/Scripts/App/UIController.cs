@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,6 +42,8 @@ public class UIController : MonoBehaviour
     public GameObject ARArea;
     public TextMeshProUGUI contentExplanation;
     public ContentList contentQuestionsList;
+    public GameObject selectTopicArea;
+    public TextMeshProUGUI topicExplanationText;
     public Slider controllerSlider;
     public TextMeshProUGUI sliderText;
     public GameObject sliderArea;
@@ -50,6 +53,8 @@ public class UIController : MonoBehaviour
     public enum Screen
     {
         About,
+        TopicList,
+        TopicText,
         ContentList,
         Explanation,
         Instruction,
@@ -69,6 +74,8 @@ public class UIController : MonoBehaviour
     private float _answer;
     private bool _instructionClosed = false;
     private Coroutine _playCoroutine;
+    private TopicDefinition _currentTopic;
+    private List<GameObject> _questionButtons = new List<GameObject>();
 
     public void Awake()
     {
@@ -76,8 +83,8 @@ public class UIController : MonoBehaviour
         panel.gameObject.SetActive(true);
 
         SetupScreen(currentScreen);
-        InstantiateButtons();
-
+        InstantiateTopicButtons();
+        
         repositionButton.onClick.AddListener(RepositioningPlane);
         instructionButton.onClick.AddListener(OpenInstruction);
         backButton.onClick.AddListener(BackButtonClick);
@@ -167,6 +174,15 @@ public class UIController : MonoBehaviour
                 SetupScreen(Screen.Settings);
                 previousScreen = previousScreenOverride;
                 break;
+            
+            case Screen.TopicText:
+                SetupScreen(Screen.TopicList);
+                break;
+            
+            case Screen.ContentList:
+                SetupScreen(Screen.TopicText);
+                break;
+            
             case Screen.Explanation:
                 SetupScreen(Screen.ContentList);
                 OnBackClick?.Invoke();
@@ -221,7 +237,7 @@ public class UIController : MonoBehaviour
             case Screen.About:
                 if (previousScreen == Screen.About)
                 {
-                    EnableNextButton("Continuar", () => SetupScreen(Screen.ContentList));
+                    EnableNextButton("Continuar", () => SetupScreen(Screen.TopicList));
                 }
                 else
                 {
@@ -231,13 +247,32 @@ public class UIController : MonoBehaviour
 
                 screens[0].gameObject.SetActive(true);
                 break;
+            
+            case Screen.TopicList:
+                UpdateTitle("Selecione o assunto");
+                screens[1].gameObject.SetActive(true);
+                settingButton.gameObject.SetActive(true);
+                break;
+            
+            case Screen.TopicText:
+                EnableNextButton("Continuar", (() => SetupScreen(Screen.ContentList)));
+                UpdateTitle(_currentTopic.topicTitle);
+                if (previousScreen == Screen.TopicList)
+                {
+                    InstantiateProblemButtons();
+                }
+                screens[2].gameObject.SetActive(true);
+                settingButton.gameObject.SetActive(true);
+                backButton.gameObject.SetActive(true);
+                break;
 
             case Screen.ContentList:
-                UpdateTitle("Selecione o assunto");
+                UpdateTitle("Selecione o problema");
 
                 footer.SetActive(false);
+                backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
-                screens[1].gameObject.SetActive(true);
+                screens[3].gameObject.SetActive(true);
                 break;
 
             case Screen.Explanation:
@@ -258,7 +293,7 @@ public class UIController : MonoBehaviour
                     nextButton.interactable = false;
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
-                screens[2].gameObject.SetActive(true);
+                screens[4].gameObject.SetActive(true);
                 break;
 
             case Screen.Instruction:
@@ -309,7 +344,7 @@ public class UIController : MonoBehaviour
                 ARArea.SetActive(previousScreen == Screen.ARVisualizer); // Can be improved
                 sliderArea.SetActive(false);
                 break;
-
+            
             default:
                 throw new ArgumentOutOfRangeException(nameof(newScreen), newScreen, null);
         }
@@ -339,28 +374,56 @@ public class UIController : MonoBehaviour
         nextButtonText.text = title;
     }
 
-    private void InstantiateButtons()
+    private void InstantiateProblemButtons()
     {
-        for (var i = 0; i < contentQuestionsList.problems.Length; i++)
+        foreach (var button in _questionButtons)
         {
-            if (contentQuestionsList.problems[i].isActive != true) continue;
+            Destroy(button);
+        }
+        _questionButtons.Clear();
+        
+        for (var i = 0; i < _currentTopic.problems.Length; i++)
+        {
+            if (_currentTopic.problems[i].isActive != true) continue;
             
             var instantiatedButton = Instantiate(questionButtonPrefab, questionContentArea.transform);
             var button = instantiatedButton.GetComponent<QuestionButton>();
+            _questionButtons.Add(instantiatedButton);
 
             var i1 = i;
             button.questionButton.onClick.AddListener(() =>
             {
+                _currentProblem = _currentTopic.problems[i1];
                 SetupScreen(Screen.Explanation);
-                var text = contentQuestionsList.problems[i1].longDescription;
+                var text = _currentProblem.longDescription;
                 contentExplanation.text = text;
-                _currentProblem = contentQuestionsList.problems[i1];
                 _isPlacementPositioned = false;
                 OnProblemSelected?.Invoke(_currentProblem);
             });
 
-            button.questionImage.sprite = contentQuestionsList.problems[i1].sprite;
-            button.titleText.text = contentQuestionsList.problems[i1].title;
+            button.questionImage.sprite = _currentTopic.problems[i].sprite;
+            button.titleText.text = _currentTopic.problems[i].title;
+        }
+    }
+
+    private void InstantiateTopicButtons()
+    {
+        for (var i = 0; i < contentQuestionsList.topics.Length; i++)
+        {
+            var instantiatedButton = Instantiate(questionButtonPrefab, selectTopicArea.transform);
+            var button = instantiatedButton.GetComponent<QuestionButton>();
+            
+            var i1 = i;
+            button.questionButton.onClick.AddListener(() =>
+            {
+                _currentTopic = contentQuestionsList.topics[i1];
+                SetupScreen(Screen.TopicText);
+                var text = _currentTopic.topicDescription;
+                topicExplanationText.text = text;
+            });
+            
+            button.questionImage.sprite = contentQuestionsList.topics[i1].topicSprite;
+            button.titleText.text = contentQuestionsList.topics[i1].topicTitle;
         }
     }
 }

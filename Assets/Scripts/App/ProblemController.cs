@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -114,6 +114,7 @@ public class ProblemController : MonoBehaviour
             var normalizedAnswerY = Mathf.InverseLerp(_currentProblem.minValue.y, _currentProblem.maxValue.y,
                 simpleOt.EvaluateY(normalizedValue));
             yValue = simpleOt.EvaluateY(normalizedValue);
+            yVelocity = simpleOt.VelocityY(normalizedValue);
             realY = Mathf.Lerp(minValue.y, maxValue.y, normalizedAnswerY);
         }
         

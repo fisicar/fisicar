@@ -33,7 +33,6 @@ public class UIController : MonoBehaviour
 
     [Header("???")]
     public Slider scaleSlider;
-    public Toggle invertColor;
     public Toggle showEquation;
     public GameObject instructionArea;
     public GameObject viewArea;

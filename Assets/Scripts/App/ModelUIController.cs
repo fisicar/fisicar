@@ -42,32 +42,25 @@ public class ModelUIController : MonoBehaviour
         {
             var text = "";
             var format = "F" + floatPoints;
-            
-            
+
+
             if (_printX)
-                text += "Vx = "+ velocity.x.ToString(format)+ _velocityUnit + Environment.NewLine;
+                text += "V" + (_printX && _printY ? "x" : "") + ": " + velocity.x.ToString(format) + _velocityUnit +
+                        Environment.NewLine;
             if (_printY)
             {
-                if (_printX)
-                    text += ", ";
-                text += "Vy = "+ velocity.y.ToString(format)+ _velocityUnit + Environment.NewLine;
+                text += "Vy: "+ velocity.y.ToString(format)+ _velocityUnit + Environment.NewLine;
             }
-
             
-            
-            if (_printParenthesis)
-                text += "(";
             if (_printX)
-                text += position.x.ToString(format) + _unit;
+                text += "S" + (_printX && _printY ? "x" : "") + ": " + position.x.ToString(format) + _unit +
+                        Environment.NewLine;
+            
             if (_printY)
             {
-                if (_printX)
-                    text += ", ";
-                text += position.y.ToString(format) + _unit;
+                text += "Sy: "+ position.y.ToString(format)+ _unit + Environment.NewLine;
             }
-
-            if (_printParenthesis)
-                text += ")";
+            
     	        
             positionText.text = text;
         }

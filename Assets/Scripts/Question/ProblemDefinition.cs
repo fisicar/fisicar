@@ -12,6 +12,7 @@ public class ProblemDefinition
     [Multiline]
     public string longDescription;
     public string unit;
+    public string velocityUnit;
 
     public bool printParenthesis = true;
     public bool printX = true;

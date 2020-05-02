@@ -12,6 +12,7 @@ public class ModelUIController : MonoBehaviour
     private bool _printX = true;
     private bool _printY = true;
     private string _unit;
+    private string _velocityUnit;
 
     private void Awake()
     {
@@ -20,12 +21,13 @@ public class ModelUIController : MonoBehaviour
          ProblemController.UpdateModelDetails += OnUpdateModelDetails;
     }
 
-    private void OnUpdateModelDetails(bool printParenthesis, bool printX, bool printY, string unit)
+    private void OnUpdateModelDetails(bool printParenthesis, bool printX, bool printY, string unit, string velocityUnit)
     {
         _printParenthesis = printParenthesis;
         _printX = printX;
         _printY = printY;
         _unit = unit;
+        _velocityUnit = velocityUnit;
     }
 
     private void OnUnitChange(string unit)
@@ -43,12 +45,12 @@ public class ModelUIController : MonoBehaviour
             
             
             if (_printX)
-                text += "Vx = "+ velocity.x.ToString(format) + Environment.NewLine;
+                text += "Vx = "+ velocity.x.ToString(format)+ _velocityUnit + Environment.NewLine;
             if (_printY)
             {
                 if (_printX)
                     text += ", ";
-                text += "Vy = "+ velocity.y.ToString(format) + Environment.NewLine;
+                text += "Vy = "+ velocity.y.ToString(format)+ _velocityUnit + Environment.NewLine;
             }
 
             

@@ -10,13 +10,13 @@ public class ProblemController : MonoBehaviour
     public Vector2 minValue = new Vector2(-0.5f, 0);
     public Vector2 maxValue = new Vector2(0.5f, 1);
 
-    public static event Action<String> OnUnitChange;
+    public static event Action<string> OnUnitChange;
     public static event Action<Vector2, Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2, Vector2> OnModelPositionUpdate;
     public static event Action<float> OnAnswerValueChange;
     public static event Action<float> OnUpdateControllerSliderValue;
 
-    public static event Action<bool, bool, bool, string> UpdateModelDetails;
+    public static event Action<bool, bool, bool, string, string> UpdateModelDetails;
 
     private GameObject _instantiatedEnvironment;
     private ProblemDefinition _problemCoroutine;
@@ -93,7 +93,7 @@ public class ProblemController : MonoBehaviour
         yield return null;
         yield return null;
         
-        UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX, _problemCoroutine.printY, _problemCoroutine.unit);
+        UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX, _problemCoroutine.printY, _problemCoroutine.unit, _problemCoroutine.velocityUnit);
     }
 
     private void UpdatePosition(float normalizedValue)

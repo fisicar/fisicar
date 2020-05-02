@@ -56,10 +56,7 @@ public class ProblemController : MonoBehaviour
         
         OnAnswerValueChange?.Invoke(_currentProblem.Answer);
 
-        if (OnMinMaxValueChange != null)
-        {
-            OnMinMaxValueChange.Invoke(_currentProblem.minValue, _currentProblem.maxValue);
-        }
+        
         _instantiatedModels = new GameObject[currentQuestion.models.Length];
 
         if (currentQuestion.environment != null)
@@ -92,8 +89,13 @@ public class ProblemController : MonoBehaviour
         yield return null;
         yield return null;
         yield return null;
-        
-        UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX, _problemCoroutine.printY, _problemCoroutine.unit, _problemCoroutine.velocityUnit);
+
+        UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX,
+            _problemCoroutine.printY, _problemCoroutine.unit, _problemCoroutine.velocityUnit);
+        if (OnMinMaxValueChange != null)
+        {
+            OnMinMaxValueChange.Invoke(_currentProblem.minValue, _currentProblem.maxValue);
+        }
     }
 
     private void UpdatePosition(float normalizedValue)

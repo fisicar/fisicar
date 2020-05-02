@@ -24,6 +24,8 @@ public class DoubleMU : SimpleMU
         equation = "S<sub>A</sub> = S<sub>oA</sub> + V<sub>A</sub>t" + Environment.NewLine + finalPosition + " = " + initialPosition + " + " + velocity + "t" + Environment.NewLine + "S<sub>B</sub> = S<sub>oB</sub> + V<sub>B</sub>t" + Environment.NewLine + finalPositionB + " = " + initialPositionB + " + " + velocityB + "t";
         minValue = new Vector2(Mathf.Min(Evaluate(0), Evaluate(1), EvaluateB(0), EvaluateB(1)), 0);
         maxValue = new Vector2(Mathf.Max(Evaluate(0), Evaluate(1), EvaluateB(0), EvaluateB(1)), 0);
+        minVelocity = new Vector2(20,0);
+        maxVelocity = new Vector2(-40,0);
     }
 
     public override float Evaluate(float normalizedValue)

@@ -8,7 +8,6 @@ public class ModelUIController : MonoBehaviour
     public int index;
     public int floatPoints = 2;
     
-    private bool _printParenthesis = true;
     private bool _printX = true;
     private bool _printY = true;
     private string _unit;
@@ -21,9 +20,9 @@ public class ModelUIController : MonoBehaviour
          ProblemController.UpdateModelDetails += OnUpdateModelDetails;
     }
 
-    private void OnUpdateModelDetails(bool printParenthesis, bool printX, bool printY, string unit, string velocityUnit)
+    private void OnUpdateModelDetails( bool printX, bool printY, string unit, string velocityUnit)
     {
-        _printParenthesis = printParenthesis;
+        
         _printX = printX;
         _printY = printY;
         _unit = unit;

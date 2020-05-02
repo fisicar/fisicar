@@ -16,7 +16,7 @@ public class ProblemController : MonoBehaviour
     public static event Action<float> OnAnswerValueChange;
     public static event Action<float> OnUpdateControllerSliderValue;
 
-    public static event Action<bool, bool, bool, string, string> UpdateModelDetails;
+    public static event Action< bool, bool, string, string> UpdateModelDetails;
 
     private GameObject _instantiatedEnvironment;
     private ProblemDefinition _problemCoroutine;
@@ -90,7 +90,7 @@ public class ProblemController : MonoBehaviour
         yield return null;
         yield return null;
 
-        UpdateModelDetails?.Invoke(_problemCoroutine.printParenthesis, _problemCoroutine.printX,
+        UpdateModelDetails?.Invoke( _problemCoroutine.printX,
             _problemCoroutine.printY, _problemCoroutine.unit, _problemCoroutine.velocityUnit);
         if (OnMinMaxValueChange != null)
         {

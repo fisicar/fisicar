@@ -9,7 +9,6 @@ public class ProblemUIController : MonoBehaviour
     public TextMeshProUGUI minValueText;
     public TextMeshProUGUI maxValueText;
     
-    private bool _printParenthesis = true;
     private bool _printX = true;
     private bool _printY = true;
     private string _unit;
@@ -22,9 +21,9 @@ public class ProblemUIController : MonoBehaviour
         ProblemController.UpdateModelDetails += OnUpdateModelDetails;
     }
     
-    private void OnUpdateModelDetails(bool printParenthesis, bool printX, bool printY, string unit, string velocityUnit)
+    private void OnUpdateModelDetails( bool printX, bool printY, string unit, string velocityUnit)
     {
-        _printParenthesis = printParenthesis;
+        
         _printX = printX;
         _printY = printY;
         _unit = unit;

@@ -19,14 +19,14 @@ MonoBehaviour:
       em dire\xE7\xE3o a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual
       o tempo, em segundos at\xE9 a bola chegar na parede?"
     unit: m
-    printParenthesis: 0
+    velocityUnit: 
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: aea213f93ac6b744ca085509c4a56428, type: 2}
-    sprite: {fileID: 21300000, guid: e563d805c6bb03741a5afdc3a3b8336c, type: 3}
+    sprite: {fileID: 21300000, guid: a1575e424713d5243abb8de6eb8002ae, type: 3}
     models:
-    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
-    environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
+    - {fileID: 2822890441924335189, guid: 10570e1b2318a6e4880285a35b8e5548, type: 3}
+    environment: {fileID: 2759467160346795482, guid: adbab0bf3ade6a4458de644dbd84c684,
       type: 3}
   - isActive: 1
     title: Movimento Uniforme - Carros
@@ -35,11 +35,11 @@ MonoBehaviour:
       o carro B se move com velocidade de 40m/s (em m\xF3dulo) em dire\xE7\xE3o ao
       carro A, em quantos segundos ir\xE3o se cruzar?"
     unit: m
-    printParenthesis: 0
+    velocityUnit: 
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: 03d380a5fc4921d46b1604216f2e40d9, type: 2}
-    sprite: {fileID: 21300000, guid: 012143533d0d6b6499cc9034e928ea57, type: 3}
+    sprite: {fileID: 21300000, guid: 944228429d89e8142ba326e3f4c935fe, type: 3}
     models:
     - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
     - {fileID: 2822890441924335189, guid: 92aa016c15c40104b8f90ea9da397a9d, type: 3}
@@ -51,27 +51,27 @@ MonoBehaviour:
       acelera em uma taxa de 2,0 m/s\xB2, em quantos segundos ele alcan\xE7ar\xE1
       9 metros de dist\xE2ncia do ponto inicial?"
     unit: m
-    printParenthesis: 0
+    velocityUnit: 
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: 4ab95ebb350c9fb479e74c567acc83da, type: 2}
-    sprite: {fileID: 21300000, guid: 012143533d0d6b6499cc9034e928ea57, type: 3}
+    sprite: {fileID: 21300000, guid: 5f6e6b810b3feb745ba94eee151151e1, type: 3}
     models:
     - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
     environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
       type: 3}
   - isActive: 1
-    title: "Movimento Uniforme - Desacelera\xE7\xE3o"
+    title: " MUV - Desacelera\xE7\xE3o"
     longDescription: "Um motorista que v\xEA um perigo a frente pisa no freio, fazendo
       o seu ve\xEDculo desalecerar em uma taxa de 16m/s^2, sabendo que o ve\xEDculo
       est\xE1 se movendo a 8m/s, quanto segundos levar\xE3o at\xE9 o carro parar
       completamente? "
     unit: m
-    printParenthesis: 0
+    velocityUnit: 
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: b6766584de124ff4a94989b394ec7cc1, type: 2}
-    sprite: {fileID: 21300000, guid: 012143533d0d6b6499cc9034e928ea57, type: 3}
+    sprite: {fileID: 21300000, guid: c53fe8406a14d11488930f4e8bc4b293, type: 3}
     models:
     - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
     environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
@@ -82,11 +82,11 @@ MonoBehaviour:
       inicial de 20m/s, se ele chuta em um \xE2ngulo de 30\xBA,  e a acelera\xE7\xE3o
       da gravidade \xE9 igual a 10m/s^2, em quantos segundos a bola atinge o ch\xE3o?"
     unit: m
-    printParenthesis: 0
+    velocityUnit: 
     printX: 1
     printY: 1
     problem: {fileID: 11400000, guid: 7995b5514a0a5bb4ab93fb0cc3512666, type: 2}
-    sprite: {fileID: 21300000, guid: 012143533d0d6b6499cc9034e928ea57, type: 3}
+    sprite: {fileID: 21300000, guid: 0bad58634b2ae274a82d074f5489a64d, type: 3}
     models:
     - {fileID: 2822890441924335189, guid: 600e31e8b7bc6184d9b71f29c8a94c54, type: 3}
     environment: {fileID: 2759467160346795482, guid: 6a79be7fe44b01e49b9829dc72781673,

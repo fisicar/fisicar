@@ -28,6 +28,8 @@ namespace Question
                        "t²)/2";
             minValue = new Vector2(Mathf.Min(initialPosition, finalPosition), 0);
             maxValue = new Vector2(Mathf.Max(initialPosition, finalPosition), 0);
+            minVelocity = new Vector2(Velocity(0),0);
+            maxVelocity = new Vector2(Velocity(1),0);
         }
 
         public override float Evaluate(float normalizedValue)

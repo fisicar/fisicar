@@ -12,6 +12,8 @@ public class Problem : ScriptableObject
 
     public Vector2 minValue;
     public Vector2 maxValue;
+    public Vector2 minVelocity;
+    public Vector2 maxVelocity;
 
     public virtual void Process()
     {

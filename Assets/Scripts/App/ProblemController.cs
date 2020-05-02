@@ -11,7 +11,7 @@ public class ProblemController : MonoBehaviour
     public Vector2 maxValue = new Vector2(0.5f, 1);
 
     public static event Action<string> OnUnitChange;
-    public static event Action<Vector2, Vector2> OnMinMaxValueChange;
+    public static event Action<Vector2, Vector2,Vector2,Vector2> OnMinMaxValueChange;
     public static event Action<int, Vector2, Vector2> OnModelPositionUpdate;
     public static event Action<float> OnAnswerValueChange;
     public static event Action<float> OnUpdateControllerSliderValue;
@@ -94,7 +94,8 @@ public class ProblemController : MonoBehaviour
             _problemCoroutine.printY, _problemCoroutine.unit, _problemCoroutine.velocityUnit);
         if (OnMinMaxValueChange != null)
         {
-            OnMinMaxValueChange.Invoke(_currentProblem.minValue, _currentProblem.maxValue);
+            OnMinMaxValueChange.Invoke(_currentProblem.minValue, _currentProblem.maxValue, _currentProblem.minVelocity,
+                _currentProblem.maxVelocity);
         }
     }
 

@@ -34,6 +34,8 @@ public class SimpleOT : Problem
                    " + " + _movementY.initialVelocity.ToString("0.0") + "t + (" + _movementY.acceleration + "t²)/2";
         minValue = new Vector2(_movementX.minValue.x, _movementY.minValue.x);
         maxValue = new Vector2(_movementX.maxValue.x, _movementY.maxValue.x);
+        minVelocity = new Vector2(Velocity(0),VelocityY(0));
+        maxVelocity = new Vector2(Velocity(1),VelocityY(1));
     }
     public override float Evaluate(float normalizedValue)
     {

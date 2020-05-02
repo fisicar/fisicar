@@ -22,6 +22,8 @@ public class SimpleMU : Problem
         equation = "S = S<sub>o</sub> + Vt" + Environment.NewLine + finalPosition + " = " + initialPosition + " + " + velocity + "t";
         minValue = new Vector2(Mathf.Min(Evaluate(0), Evaluate(1)), 0);
         maxValue = new Vector2(Mathf.Max(Evaluate(0), Evaluate(1)), 0);
+        minVelocity = new Vector2(Velocity(0),0);
+        maxVelocity = new Vector2(Velocity(1),0);
     }
 
     public override float Evaluate(float normalizedValue)

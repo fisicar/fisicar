@@ -6,7 +6,7 @@ using UnityEngine;
 public class Problem : ScriptableObject
 {
     protected int Degree;
-    protected Coefficient[] Coefficients;
+    protected float[] Coefficients;
     public string equation;
     public float Answer;
 

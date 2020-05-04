@@ -13,12 +13,10 @@ public class SimpleMU : Problem
     public override void Process()
     {
         Degree = 1;
-        Coefficients = new Coefficient[Degree + 1];
-        for (int i = 0; i < Coefficients.Length; i++) 
-            Coefficients[i] = new Coefficient();
-        Coefficients[0].value = initialPosition;
+        Coefficients = new float[Degree + 1];
+        Coefficients[0] = initialPosition;
         Answer = (finalPosition - initialPosition) / velocity;
-        Coefficients[1].value = velocity;
+        Coefficients[1] = velocity;
         equation = "S = S<sub>o</sub> + Vt" + Environment.NewLine + finalPosition + " = " + initialPosition + " + " + velocity + "t";
         minValue = new Vector2(Mathf.Min(Evaluate(0), Evaluate(1)), 0);
         maxValue = new Vector2(Mathf.Max(Evaluate(0), Evaluate(1)), 0);

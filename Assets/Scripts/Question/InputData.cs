@@ -1,4 +1,7 @@
-﻿public class Coefficient
+﻿using System;
+
+[Serializable]
+public class InputData
 {
     public string title;
     public float value;

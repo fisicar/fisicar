@@ -15,15 +15,13 @@ namespace Question
         public override void Process()
         {
             Degree = 2;
-            Coefficients = new Coefficient[Degree + 1];
-            for (int i = 0; i < Coefficients.Length; i++) 
-                Coefficients[i] = new Coefficient();
-            Coefficients[0].value = initialPosition - finalPosition;
-            Coefficients[1].value = initialVelocity;
-            Coefficients[2].value = acceleration / 2;
-            var delta = Mathf.Pow(Coefficients[1].value, 2) - 4 * Coefficients[2].value * Coefficients[0].value;
+            Coefficients = new float[Degree + 1];
+            Coefficients[0] = initialPosition - finalPosition;
+            Coefficients[1] = initialVelocity;
+            Coefficients[2] = acceleration / 2;
+            var delta = Mathf.Pow(Coefficients[1], 2) - 4 * Coefficients[2] * Coefficients[0];
             if (delta < 0) throw new Exception("Error: delta lower than zero");
-            Answer = (-Coefficients[1].value + Mathf.Sqrt(delta)) / (2 * Coefficients[2].value);
+            Answer = (-Coefficients[1] + Mathf.Sqrt(delta)) / (2 * Coefficients[2]);
             equation = "S = S<sub>o</sub> + V<sub>o</sub>t + (at²)/2" + Environment.NewLine + finalPosition + " = " + initialPosition + " + " + initialVelocity + "t + (" + acceleration +
                        "t²)/2";
             minValue = new Vector2(Mathf.Min(initialPosition, finalPosition), 0);

@@ -19,7 +19,7 @@ MonoBehaviour:
       em dire\xE7\xE3o a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual
       o tempo, em segundos at\xE9 a bola chegar na parede?"
     unit: m
-    velocityUnit: 
+    velocityUnit: m/s
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: aea213f93ac6b744ca085509c4a56428, type: 2}
@@ -35,7 +35,7 @@ MonoBehaviour:
       o carro B se move com velocidade de 40m/s (em m\xF3dulo) em dire\xE7\xE3o ao
       carro A, em quantos segundos ir\xE3o se cruzar?"
     unit: m
-    velocityUnit: 
+    velocityUnit: m/s
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: 03d380a5fc4921d46b1604216f2e40d9, type: 2}
@@ -51,7 +51,7 @@ MonoBehaviour:
       acelera em uma taxa de 2,0 m/s\xB2, em quantos segundos ele alcan\xE7ar\xE1
       9 metros de dist\xE2ncia do ponto inicial?"
     unit: m
-    velocityUnit: 
+    velocityUnit: m/s
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: 4ab95ebb350c9fb479e74c567acc83da, type: 2}
@@ -63,11 +63,11 @@ MonoBehaviour:
   - isActive: 1
     title: " MUV - Desacelera\xE7\xE3o"
     longDescription: "Um motorista que v\xEA um perigo a frente pisa no freio, fazendo
-      o seu ve\xEDculo desalecerar em uma taxa de 16m/s^2, sabendo que o ve\xEDculo
+      o seu ve\xEDculo desalecerar em uma taxa de 16m/s\xB2, sabendo que o ve\xEDculo
       est\xE1 se movendo a 8m/s, quanto segundos levar\xE3o at\xE9 o carro parar
       completamente? "
     unit: m
-    velocityUnit: 
+    velocityUnit: m/s
     printX: 1
     printY: 0
     problem: {fileID: 11400000, guid: b6766584de124ff4a94989b394ec7cc1, type: 2}
@@ -80,9 +80,9 @@ MonoBehaviour:
     title: "Lan\xE7amento Obl\xEDquo - Futebol"
     longDescription: "Um jogador de futebol chuta uma bola, dando-a uma velocidade
       inicial de 20m/s, se ele chuta em um \xE2ngulo de 30\xBA,  e a acelera\xE7\xE3o
-      da gravidade \xE9 igual a 10m/s^2, em quantos segundos a bola atinge o ch\xE3o?"
+      da gravidade \xE9 igual a 10m/s\xB2, em quantos segundos a bola atinge o ch\xE3o?"
     unit: m
-    velocityUnit: 
+    velocityUnit: m/s
     printX: 1
     printY: 1
     problem: {fileID: 11400000, guid: 7995b5514a0a5bb4ab93fb0cc3512666, type: 2}

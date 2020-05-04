@@ -52,11 +52,10 @@ public class ExplanationInputController : MonoBehaviour
 
     private void PrintList(List<InputData> inputList)
     {
-        for (var i = transform.childCount - 1; i >= 0; i--)
+        for (var i = transform.childCount - 1; i >= 4; i--)
         {
             var line = transform.GetChild(i);
-            if (i > 1)
-                Destroy(line.gameObject);
+            Destroy(line.gameObject);
         }
         _checkList = new bool[_inputList.Count];
         for (var i = 0; i < _inputList.Count; i++)

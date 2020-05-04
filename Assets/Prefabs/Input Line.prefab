@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8097aa13785e06b4ba528d61aa105dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputBackground: {fileID: 1758373393292896607}
   title: {fileID: 293889045978107681}
   inputField: {fileID: 3448321069966930999}
   unit: {fileID: 4021757187333491790}

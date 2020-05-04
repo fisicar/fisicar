@@ -93,6 +93,7 @@ public class UIController : MonoBehaviour
 
         ProblemController.OnAnswerValueChange += f => _answer = f;
         ProblemController.OnUpdateControllerSliderValue += f => controllerSlider.value = f;
+        ExplanationInputController.OnAllCorrect += () => nextButton.interactable = true;
     }
 
     private void UpdateSliderText(float arg0)
@@ -170,6 +171,7 @@ public class UIController : MonoBehaviour
             case Screen.Explanation:
                 SetupScreen(Screen.ContentList);
                 OnBackClick?.Invoke();
+                nextButton.interactable = true;
                 break;
 
             case Screen.Positioning:
@@ -241,7 +243,7 @@ public class UIController : MonoBehaviour
 
             case Screen.Explanation:
                 UpdateTitle("Sobre o problema");
-                EnableNextButton("Visualizar em RA", () =>
+                EnableNextButton("Visualizar Questão", () =>
                 {
                     if (_instructionClosed)
                     {
@@ -253,6 +255,8 @@ public class UIController : MonoBehaviour
                     }
                 });
 
+                if (previousScreen == Screen.ContentList)
+                    nextButton.interactable = false;
                 backButton.gameObject.SetActive(true);
                 settingButton.gameObject.SetActive(true);
                 screens[2].gameObject.SetActive(true);

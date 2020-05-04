@@ -381,6 +381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566bd8292004df749b2097d36d2f7e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputLinePrefab: {fileID: 4278540571393379244, guid: ac44cfed8903cb04e9c501f601e97551,
+    type: 3}
+  colorTrue: {r: 0.49803922, g: 1, b: 0.495283, a: 1}
+  colorFalse: {r: 1, g: 0.495283, b: 0.495283, a: 1}
 --- !u!1 &7718177401445727768
 GameObject:
   m_ObjectHideFlags: 0

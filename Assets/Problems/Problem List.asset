@@ -12,89 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f97425786bcc864cb69590bd46723b7, type: 3}
   m_Name: Problem List
   m_EditorClassIdentifier: 
-  problems:
-  - title: Movimento Uniforme - Bolinha
-    isActive: 1
-    longDescription: "Uma bola se move em movimento retil\xEDneo uniforme a 2,5 m/s
-      em dire\xE7\xE3o a uma parede que est\xE1 a 5 metros de dist\xE2ncia, qual
-      o tempo, em segundos at\xE9 a bola chegar na parede?"
-    unit: m
-    velocityUnit: m/s
-    printX: 1
-    printY: 0
-    problem: {fileID: 11400000, guid: aea213f93ac6b744ca085509c4a56428, type: 2}
-    sprite: {fileID: 21300000, guid: a1575e424713d5243abb8de6eb8002ae, type: 3}
-    models:
-    - {fileID: 2822890441924335189, guid: 10570e1b2318a6e4880285a35b8e5548, type: 3}
-    environment: {fileID: 2759467160346795482, guid: adbab0bf3ade6a4458de644dbd84c684,
-      type: 3}
-  - title: Movimento Uniforme - Carros
-    isActive: 1
-    longDescription: "Dois carros A e B, separados por 120m, percorrem ruas paralelas.
-      O  carro A se move com velocidade de 20m/s, em dire\xE7\xE3o ao carro B, e
-      o carro B se move com velocidade de 40m/s (em m\xF3dulo) em dire\xE7\xE3o ao
-      carro A, em quantos segundos ir\xE3o se cruzar?"
-    unit: m
-    velocityUnit: m/s
-    printX: 1
-    printY: 0
-    problem: {fileID: 11400000, guid: 03d380a5fc4921d46b1604216f2e40d9, type: 2}
-    sprite: {fileID: 21300000, guid: 944228429d89e8142ba326e3f4c935fe, type: 3}
-    models:
-    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
-    - {fileID: 2822890441924335189, guid: 92aa016c15c40104b8f90ea9da397a9d, type: 3}
-    environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
-      type: 3}
-  - title: MUV - v
-    isActive: 1
-    longDescription: "Um ve\xEDculo parte do repouso em movimento retil\xEDneo e
-      acelera em uma taxa de 2,0 m/s\xB2, em quantos segundos ele alcan\xE7ar\xE1
-      9 metros de dist\xE2ncia do ponto inicial?"
-    unit: m
-    velocityUnit: m/s
-    printX: 1
-    printY: 0
-    problem: {fileID: 11400000, guid: 4ab95ebb350c9fb479e74c567acc83da, type: 2}
-    sprite: {fileID: 21300000, guid: 5f6e6b810b3feb745ba94eee151151e1, type: 3}
-    models:
-    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
-    environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
-      type: 3}
-  - title: " MUV - Desacelera\xE7\xE3o"
-    isActive: 1
-    longDescription: "Um motorista que v\xEA um perigo a frente pisa no freio, fazendo
-      o seu ve\xEDculo desalecerar em uma taxa de 16m/s\xB2, sabendo que o ve\xEDculo
-      est\xE1 se movendo a 8m/s, quanto segundos levar\xE3o at\xE9 o carro parar
-      completamente? "
-    unit: m
-    velocityUnit: m/s
-    printX: 1
-    printY: 0
-    problem: {fileID: 11400000, guid: b6766584de124ff4a94989b394ec7cc1, type: 2}
-    sprite: {fileID: 21300000, guid: c53fe8406a14d11488930f4e8bc4b293, type: 3}
-    models:
-    - {fileID: 2822890441924335189, guid: a768647d18848964cab41edcc2e39939, type: 3}
-    environment: {fileID: 2759467160346795482, guid: a97e9a41fc76f4943924ee21c1ca1433,
-      type: 3}
-  - title: "Lan\xE7amento Obl\xEDquo - Futebol"
-    isActive: 1
-    longDescription: "Um jogador de futebol chuta uma bola, dando-a uma velocidade
-      inicial de 20m/s, se ele chuta em um \xE2ngulo de 30\xBA,  e a acelera\xE7\xE3o
-      da gravidade \xE9 igual a 10m/s\xB2, em quantos segundos a bola atinge o ch\xE3o?"
-    unit: m
-    velocityUnit: m/s
-    printX: 1
-    printY: 1
-    problem: {fileID: 11400000, guid: 7995b5514a0a5bb4ab93fb0cc3512666, type: 2}
-    sprite: {fileID: 21300000, guid: 0bad58634b2ae274a82d074f5489a64d, type: 3}
-    models:
-    - {fileID: 2822890441924335189, guid: 600e31e8b7bc6184d9b71f29c8a94c54, type: 3}
-    environment: {fileID: 2759467160346795482, guid: 6a79be7fe44b01e49b9829dc72781673,
-      type: 3}
   topics:
   - topicTitle: Movimento Uniforme
     topicSprite: {fileID: 0}
-    topicDescription: MU
+    topicDescription: "Movimento uniforme \xE9 o deslocamento de um objeto que ocorre
+      em linha reta e com velocidade constante e diferente de zero. Assim, percorre
+      dist\xE2ncias iguais em intervalos de tempos iguais. No movimento uniforme,
+      n\xE3o h\xE1 acelera\xE7\xE3o.\r\n\r\nComo a posi\xE7\xE3o varia com o tempo
+      de forma constante, podemos calcular a posi\xE7\xE3o em que um objeto estar\xE1
+      ap\xF3s um intervalo de tempo (t). Para isso, devemos saber a sua posi\xE7\xE3o
+      inicial (S0) e a velocidade (v) com a qual esse corpo desloca-se. Ap\xF3s ter
+      identificado essas informa\xE7\xF5es, basta utiliz\xE1-las na seguinte f\xF3rmula:\r\n\r\nS
+      = S<sub>o</sub> + v * t\r\n\r\nS \u2013 posi\xE7\xE3o final do m\xF3vel\r\nS<sub>o</sub>
+      \u2013 posi\xE7\xE3o inicial do m\xF3vel\r\nv \u2013 velocidade do m\xF3vel\r\nt
+      \u2013 intervalo de tempo\r\n\r\nPara utilizar essa f\xF3rmula, \xE9 necess\xE1rio
+      lembrar as unidades utilizadas para cada uma das grandezas acima de acordo
+      com o Sistema Internacional de Unidades (SI). De acordo com o SI, as posi\xE7\xF5es
+      s\xE3o dadas em metros (m), o intervalo de tempo \xE9 medido em segundos (s)
+      e a velocidade \xE9 dada em metros por segundo (m/s).\r\n"
     problems:
     - title: Bolinha
       isActive: 1
@@ -130,7 +65,20 @@ MonoBehaviour:
         type: 3}
   - topicTitle: Movimento Unif. Variado
     topicSprite: {fileID: 0}
-    topicDescription: MUV
+    topicDescription: "Movimento uniformente variado \xE9 o deslocamento de um objeto
+      que ocorre em linha reta, com acelera\xE7\xE3o cosntante e diferente de zero.
+      Assim a velocidade muda constantemente com o tempo e o obejto percorre distancias
+      diferentes em intervalos de tempos iguais.\r\n\r\nPara calcular a velocidade
+      de um objeto apos um determinado tempo ultilizamos a seguinte formula:\r\n\r\nv
+      = v<sub>o</sub> + a * t\r\n\r\nv - velocidade \r\nv<sub>o</sub> - velocidade
+      inicial\r\na - acelera\xE7\xE3o \r\nt - tempo\r\n\r\nPortanto dado a velocidade
+      inicial, a acelera\xE7\xE3o e o tempo decorrido \xE9 possivel saber a velocidade
+      atual do objeto.\r\n\r\nPara calcular a posi\xE7\xE3o de um objeto apos um
+      determinado tempo \xE9 utilizada a seguinte formula:\r\n\r\nS = S<sub>o</sub>
+      + v<sub>o</sub> * t + (a * t\xB2)/2\r\n\r\nS - posi\xE7\xE3o final\r\nS<sub>o</sub>
+      - posi\xE7\xE3o inicial\r\nv<sub>o</sub> - velocidade inicial\r\na - acelera\xE7\xE3o\r\nt
+      - tempo\r\n\r\nLogo dados a posi\xE7\xE3o inicial, velocidade inicial, acelera\xE7\xE3o
+      e o tempo pode-se calcular a posi\xE7\xE3o atual do objeto."
     problems:
     - title: "Acelera\xE7\xE3o"
       isActive: 1
@@ -165,7 +113,38 @@ MonoBehaviour:
         type: 3}
   - topicTitle: "Lan\xE7amento Obl\xEDquio"
     topicSprite: {fileID: 0}
-    topicDescription: LOL
+    topicDescription: "O lan\xE7amento obl\xEDquo ou de proj\xE9til \xE9 um movimento
+      realizado por um objeto que \xE9 lan\xE7ado na diagonal.\r\n\r\nEsse tipo de
+      movimento realiza uma trajet\xF3ria parab\xF3lica, unindo movimentos na vertical
+      (sobe e desce) e na horizontal. \r\nAssim, o objeto arremessado forma um \xE2ngulo
+      (\u03B8) entre 0\xB0 e 90\xB0 em rela\xE7\xE3o a horizontal.\r\n\r\nNa dire\xE7\xE3o
+      vertical ele realiza um Movimento Uniformemente Variado (MUV). J\xE1 na posi\xE7\xE3o
+      horizontal, o Movimento Retil\xEDneo Uniforme (MRU).\r\n\r\nNesse caso, o objeto
+      \xE9 lan\xE7ado com uma velocidade inicial (v<sub>o</sub>) e est\xE1 sob a
+      a\xE7\xE3o da for\xE7a da gravidade (g).\r\n\r\nA posi\xE7\xE3o inicial (s<sub>o</sub>)
+      indica o local onde tem in\xEDcio o lan\xE7amento. J\xE1 a posi\xE7\xE3o final
+      (s<sub>f</sub>) indica o final do lan\xE7amento, ou seja, o local onde o objeto
+      cessa o movimento parab\xF3lico.\r\n\r\nPara calcular o lan\xE7amento obl\xEDquo
+      no sentido vertical, utiliza-se a f\xF3rmula da Equa\xE7\xE3o de Torricelli:\r\n\r\nv\xB2
+      = v<sub>o</sub>\xB2 + 2 * a * \u0394s\r\n\r\nv - velocidade final\r\nv<sub>o</sub>
+      - velocidade inicial\r\na - acelera\xE7\xE3o\r\n\u0394S - varia\xE7\xE3o de
+      deslocamento do corpo\r\n\r\nEla \xE9 utilizada para calcular a altura m\xE1xima
+      atingida pelo objeto. Assim, a partir da equa\xE7\xE3o de Torricelli podemos
+      calcular a altura decorrente do \xE2ngulo formado:\r\n\r\nH = v<sub>o</sub>\xB2
+      * sen\xB2(\u03B8) / (2 * g)\r\n\r\nH - altura m\xE1xima\r\nv<sub>o</sub> -
+      velocidade inicial\r\nsen(\u03B8) - \xE2ngulo realizado pelo objeto\r\ng -
+      acelera\xE7\xE3o da gravidade\r\n\r\nAl\xE9m disso, podemos calcular o lan\xE7amento
+      obl\xEDquo do movimento realizado na horizontal.\r\n\r\nImportante notar que,
+      nesse caso o corpo n\xE3o sofre acelera\xE7\xE3o da gravidade. Assim, temos
+      a equa\xE7\xE3o hor\xE1ria do MRU:\r\n\r\nS = S<sub>o</sub> + v * t\r\n\r\nS
+      - posi\xE7\xE3o\r\nS<sub>o</sub> - posi\xE7\xE3o inicial\r\nv - velocidade\r\nt
+      - tempo\r\n\r\nA partir dela, podemos calcular o alcance horizontal do objeto:\r\n\r\nA
+      = v * cos(\u03B8) * t\r\n\r\nOnde,\r\n\r\nA - alcance do objeto na horizontal\r\nv
+      - velocidade do objeto\r\ncos(\u03B8) - \xE2ngulo realizado pelo objeto\r\nt
+      - tempo\r\n\r\nPosto que o objeto lan\xE7ado retorna ao solo, o valor a ser
+      considerado \xE9 o dobro do tempo de subida.\r\n\r\nAssim, a f\xF3rmula que
+      determina o alcance m\xE1ximo do corpo \xE9 definido da seguinte maneira:\r\n\r\nA
+      = v\xB2 * sen(2\u03B8) / g"
     problems:
     - title: Futebol
       isActive: 1

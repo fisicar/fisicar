@@ -29,9 +29,10 @@ public class SimpleOT : Problem
         _movementX.finalPosition = _movementX.initialPosition + _movementX.velocity * _movementY.Answer;
         _movementX.Process();
         Answer = _movementY.Answer;
-        equation = "S<sub>X</sub> = S<sub>oX</sub> + V<sub>oX</sub>t" + Environment.NewLine + _movementX.finalPosition.ToString("0.0") + " = " + _movementX.initialPosition + " + " + _movementX.velocity.ToString("0.0") +
-                   "t" + Environment.NewLine + "S<sub>Y</sub> = S<sub>oY</sub> + V<sub>oY</sub>t + (a<sub>Y</sub>t²)/2" + Environment.NewLine + _movementY.finalPosition + " = " + _movementY.initialPosition +
-                   " + " + _movementY.initialVelocity.ToString("0.0") + "t + (" + _movementY.acceleration + "t²)/2";
+        equation = "S<sub>X</sub> = S<sub>oX</sub> + v<sub>oX</sub> * t" + 
+                   Environment.NewLine + _movementX.finalPosition.ToString("0.0") + " = " + _movementX.initialPosition + " + " + _movementX.velocity.ToString("0.0") + " * t" + 
+                   Environment.NewLine + "S<sub>Y</sub> = S<sub>oY</sub> + v<sub>oY</sub> * t + (a<sub>Y</sub> * t²) / 2" + 
+                   Environment.NewLine + _movementY.finalPosition + " = " + _movementY.initialPosition + " + " + _movementY.initialVelocity.ToString("0.0") + " * t + (" + _movementY.acceleration + " * t²) / 2";
         minValue = new Vector2(_movementX.minValue.x, _movementY.minValue.x);
         maxValue = new Vector2(_movementX.maxValue.x, _movementY.maxValue.x);
         minVelocity = new Vector2(Velocity(0),VelocityY(0));

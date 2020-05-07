@@ -19,8 +19,8 @@ namespace Question
                 throw new Exception("Error: delta lower than zero");
             Answer = (-Coefficients[1] - Mathf.Sqrt(delta)) / (2 * Coefficients[2]);
             var halfTime = Coefficients[1] / -Coefficients[2] / 2;
-            equation = "S = S<sub>o</sub> + V<sub>o</sub>t + (at²)/2" + Environment.NewLine + finalPosition + " = " + initialPosition + " + " + initialVelocity + "t + (" + acceleration +
-                       "t²)/2";
+            equation = "S = S<sub>o</sub> + v<sub>o</sub>t + (a * t²) / 2" + 
+                       Environment.NewLine + finalPosition + " = " + initialPosition + " + " + initialVelocity + " * t + (" + acceleration + " * t²) / 2";
             minValue = new Vector2(Mathf.Min(initialPosition, finalPosition, Function(halfTime)), 0);
             maxValue = new Vector2(Mathf.Max(initialPosition, finalPosition, Function(halfTime)), 0);
         }

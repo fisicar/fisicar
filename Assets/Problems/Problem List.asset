@@ -37,7 +37,7 @@ MonoBehaviour:
         m/s em dire\xE7\xE3o a uma parede que est\xE1 a 5 metros de dist\xE2ncia,
         qual o tempo, em segundos at\xE9 a bola chegar na parede?"
       unit: m
-      velocityUnit: 
+      velocityUnit: m/s
       printX: 1
       printY: 0
       problem: {fileID: 11400000, guid: aea213f93ac6b744ca085509c4a56428, type: 2}
@@ -53,7 +53,7 @@ MonoBehaviour:
         e o carro B se move com velocidade de 40m/s (em m\xF3dulo) em dire\xE7\xE3o
         ao carro A, em quantos segundos ir\xE3o se cruzar?"
       unit: m
-      velocityUnit: 
+      velocityUnit: m/s
       printX: 1
       printY: 0
       problem: {fileID: 11400000, guid: 03d380a5fc4921d46b1604216f2e40d9, type: 2}
